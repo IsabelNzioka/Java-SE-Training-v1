@@ -1,20 +1,26 @@
 package com.systechafrica;
 
-import static org.junit.Assert.assertTrue;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
 
-import org.junit.Test;
-
-/**
- * Unit test for simple App.
- */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)  //? default instance
 public class AppTest 
 {
-    /**
-     * Rigorous Test :-)
-     */
+
+    // ? Reference => App
+    App app = new App();
+
+
     @Test
-    public void shouldAnswerWithTrue()
-    {
-        assertTrue( true );
+    void add() {
+        // when
+        int result = app.add(2, 3);
+        // then
+        int expected = 5;
+        // verify thst result = expected
+        Assertions.assertEquals(expected, result, " The sum of 2 + 3 should be 5");
+
     }
+ 
 }
