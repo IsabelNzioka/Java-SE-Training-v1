@@ -43,6 +43,33 @@ public class VariablesDemo {
 
         LOGGER.info("Long Minimum "+ Long.MIN_VALUE);
         LOGGER.info("Long Minimum "+ Long.MAX_VALUE);
+
+
+         // byte, short, int, long
+        //? Wrapper classes
+
+        byte aPrimitive = 23;
+        Byte aWrapper = 23;
+
+        LOGGER.info("byte primitive " + aPrimitive);
+        LOGGER.info("Byte wrapper " + aWrapper);
+
+        int a = aWrapper.intValue();
+
+        LOGGER.info("Integer value from Byte wrapper " + a );
+
+        //short 
+        short s = 23;
+        Short aShort = 23;
+
+        // integer 
+        int c =23;
+        Integer aInt = 23;
+
+        // long 
+        long d = 23;
+        //! You need to explicitly suffix the Long wrapper with an L
+        Long aLong = 23L;
     }
 
     private void floatingTypes(){
@@ -51,6 +78,14 @@ public class VariablesDemo {
         double doubleRate = 2.1457454;
         LOGGER.info("Float value: " + floatRate);
         LOGGER.info("Double value: " + doubleRate);
+
+        // float
+        float price = 0.2365F;
+        Float priceFloat = 0.2365F;
+
+        // double
+        double priceNew = 0.2365F;
+        Double priceDouble = 0.2365;
         
     }
 
@@ -58,7 +93,13 @@ public class VariablesDemo {
         // character type
        char grade = 'A';
         LOGGER.info("character value: " + grade);  
+
+        // character type
+        Character characterType = 'A';
+
     }
+
+
       private void booleanTypes(){
         // boolean type
        boolean isPromoted = false;
