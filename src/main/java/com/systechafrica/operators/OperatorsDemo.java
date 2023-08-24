@@ -39,8 +39,46 @@ public class OperatorsDemo {
 
     }
     
+
+    private void assignmentOperators() {
+        // simple assinment operator
+        int quantity = 35;
+
+        // addition assignment operator - quantity = quantity + quantity
+        quantity += 10;
+        LOGGER.info("Quanity: " + quantity);
+
+        // multiplication assignment operator
+        quantity *= 100;
+        LOGGER.info("Quanity: " + quantity);
+
+
+         // division assignment operator
+        quantity /= 100;
+        LOGGER.info("Quanity: " + quantity);
+
+
+    }
+    
+    public void comparisionOperators() {
+        int studentOneAge = 20;
+        int studentTwoAge = 25;
+
+        // Equality Operator
+        boolean isStudentOneAgeEqualToStudentTwoAge = studentOneAge == studentTwoAge;
+        LOGGER.info("StudentOneAge is Equal to StudentTowAge" + isStudentOneAgeEqualToStudentTwoAge);
+
+         // Inequality Operator
+        boolean isStudentOneAgeIsNotEqualToStudentTwoAge = studentOneAge != studentTwoAge;
+        LOGGER.info("StudentOneAge is Not Equal to StudentTowAge" + isStudentOneAgeIsNotEqualToStudentTwoAge);
+
+
+    }
+    
+    
     public static void main(String[] args) {
         OperatorsDemo app = new OperatorsDemo();
         app.arithmeticOperators();
+        app.assignmentOperators();
     }
 }
