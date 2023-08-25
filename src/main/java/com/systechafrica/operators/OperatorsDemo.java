@@ -122,14 +122,14 @@ public class OperatorsDemo {
 
      public void notlogicalOperators() {
         int studentOneAge = 17;
-        // int studentTwoAge = 25;
+
 
         boolean isStudentOneAllowed = studentOneAge >= 18;
-        // boolean isStudentTwoAllowed = studentTwoAge >= 18;
+       
 
         //  NOT Operator
         // if(!isStudentOneAllowed) {
-            if(!isStudentOneAllowed) {
+        if(isStudentOneAllowed) {
             LOGGER.info("Students are allowed for ID registration");
         } else {
             LOGGER.info("NOT allowed for ID registration");
