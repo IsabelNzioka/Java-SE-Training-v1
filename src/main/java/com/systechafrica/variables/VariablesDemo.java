@@ -5,19 +5,7 @@ import java.util.logging.Logger;
 
 public class VariablesDemo {
     private static final Logger LOGGER = Logger.getLogger(VariablesDemo.class.getName());
-    public static void main(String[] args) {
-        VariablesDemo demo = new VariablesDemo();
-
-
-     demo.booleanTypes();  
-        demo.characterTypes();
-       demo.floatingTypes();
-        demo.variableDeclarations();
-        demo.constantVariables();
-        demo.integerTypes();
-     
-    }
-
+  
     private void variableDeclarations() {
         //integer variable
         // ? type variableName
@@ -25,7 +13,7 @@ public class VariablesDemo {
         LOGGER.info("Score integer variable value is " + score);
     }
 
-        private  void constantVariables() {
+    private  void constantVariables() {
          // ? constant variable
         // final type variableName = value;
         final double PI = 3.14159;
@@ -38,11 +26,11 @@ public class VariablesDemo {
         // ? type variableName
         int score = 99;
         LOGGER.info("Score integer variable value is: " + score);
-        LOGGER.info("Integer Minimum "+ Integer.MIN_VALUE);
-        LOGGER.info("Integer Maximum "+ Integer.MAX_VALUE);
+        LOGGER.info("Integer Minimum " + Integer.MIN_VALUE);
+        LOGGER.info("Integer Maximum " + Integer.MAX_VALUE);
 
-        LOGGER.info("Long Minimum "+ Long.MIN_VALUE);
-        LOGGER.info("Long Minimum "+ Long.MAX_VALUE);
+        LOGGER.info("Long Minimum " + Long.MIN_VALUE);
+        LOGGER.info("Long Minimum " + Long.MAX_VALUE);
 
 
          // byte, short, int, long
@@ -55,6 +43,7 @@ public class VariablesDemo {
         LOGGER.info("Byte wrapper " + aWrapper);
 
         int a = aWrapper.intValue();
+    
 
         LOGGER.info("Integer value from Byte wrapper " + a );
 
@@ -108,7 +97,19 @@ public class VariablesDemo {
          LOGGER.info("true value: " + isProcessed);  
     }
     
-    public int add(int a, int b) {
-        return a + b;
+
+
+      public static void main(String[] args) {
+        VariablesDemo demo = new VariablesDemo();
+
+
+        demo.booleanTypes();  
+        demo.characterTypes();
+        demo.floatingTypes();
+        demo.variableDeclarations();
+        demo.constantVariables();
+        demo.integerTypes();
+     
     }
+
 }

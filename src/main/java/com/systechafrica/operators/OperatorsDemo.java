@@ -2,10 +2,10 @@ package com.systechafrica.operators;
 
 import java.util.logging.Logger;
 
-import com.systechafrica.variables.VariablesDemo;
+
 
 public class OperatorsDemo {
-    private static final Logger LOGGER = Logger.getLogger(VariablesDemo.class.getName());
+    private static final Logger LOGGER = Logger.getLogger(OperatorsDemo.class.getName());
 
     private void arithmeticOperators() {
         //  Addition Operator
@@ -44,20 +44,18 @@ public class OperatorsDemo {
         // simple assinment operator
         int quantity = 35;
 
-        // addition assignment operator - quantity = quantity + quantity
+        // addition assignment operator - quantity = quantity + 10
         quantity += 10;
         LOGGER.info("Quanity: " + quantity);
 
-        // multiplication assignment operator
+        // multiplication assignment operator - quantity = quantity * 100
         quantity *= 100;
         LOGGER.info("Quanity: " + quantity);
 
 
-         // division assignment operator
-        quantity /= 100;
+         // division assignment operator - quantity = quantity / 20
+        quantity /= 20;
         LOGGER.info("Quanity: " + quantity);
-
-
     }
     
     public void comparisionOperators() {
@@ -66,12 +64,28 @@ public class OperatorsDemo {
 
         // Equality Operator
         boolean isStudentOneAgeEqualToStudentTwoAge = studentOneAge == studentTwoAge;
-        LOGGER.info("StudentOneAge is Equal to StudentTowAge" + isStudentOneAgeEqualToStudentTwoAge);
+        LOGGER.info("StudentOneAge is Equal to StudentTwoAge: " + isStudentOneAgeEqualToStudentTwoAge);
 
          // Inequality Operator
         boolean isStudentOneAgeIsNotEqualToStudentTwoAge = studentOneAge != studentTwoAge;
-        LOGGER.info("StudentOneAge is Not Equal to StudentTowAge" + isStudentOneAgeIsNotEqualToStudentTwoAge);
+        LOGGER.info("StudentOneAge is Not Equal to StudentTwoAge: " + isStudentOneAgeIsNotEqualToStudentTwoAge);
 
+        // Less than operator
+        boolean isStudentOneAgeLessThanStudentTwoAge = studentOneAge < studentTwoAge;
+        LOGGER.info("StudentOneAge is Less than StudentTwoAge: " + isStudentOneAgeLessThanStudentTwoAge);
+
+         // Greater than operator
+        boolean isStudentOneAgeGreaterThanStudentTwoAge = studentOneAge > studentTwoAge;
+        LOGGER.info("StudentOneAge is Greater than StudentTwoAge: " + isStudentOneAgeGreaterThanStudentTwoAge);
+
+
+        // Greater than or Equal to operator >=
+        boolean isStudentOneAgeGreaterThanOrEqualToStudentTwoAge = studentOneAge >= studentTwoAge;
+        LOGGER.info("StudentOneAge is Greater than or Equal to StudentTwoAge: " + isStudentOneAgeGreaterThanOrEqualToStudentTwoAge);
+
+                // Less than or Equal to operator <=
+        boolean isStudentOneAgeLessThanOrEqualToStudentTwoAge = studentOneAge <= studentTwoAge;
+        LOGGER.info("StudentOneAge is Less than or Equal to StudentTwoAge: " + isStudentOneAgeLessThanOrEqualToStudentTwoAge);
 
     }
     
@@ -80,5 +94,6 @@ public class OperatorsDemo {
         OperatorsDemo app = new OperatorsDemo();
         app.arithmeticOperators();
         app.assignmentOperators();
+        app.comparisionOperators();
     }
 }
