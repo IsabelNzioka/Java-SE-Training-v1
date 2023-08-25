@@ -19,13 +19,27 @@ public class LoopingStatements {
          for(int counter = 10; counter > 0; counter--) {
             LOGGER.info("Count = " + counter);
         }
+    }
+
+    public void whileLoops() {
+        int studentCount = 0;
+        int counter = 10;
 
 
+         while(studentCount < 10) {
+            LOGGER.info("Student Count WhileLoops: " + studentCount);
+            studentCount++;
+        }
+        while(counter > 0) {
+            LOGGER.info("Counter WhileLoops: " + counter);
+            counter--;
+        }
     }
 
       public static void main(String[] args) {
        LoopingStatements app = new LoopingStatements();
        app.forLoop();
+       app.whileLoops();
         
      
      }
