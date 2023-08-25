@@ -52,6 +52,8 @@ public class ControlFlow {
            case "SUNDAY":
                 LOGGER.info("Sherehe");
                 break;
+            default:
+                LOGGER.info("Enter A Valid Day");
         }
 
 
