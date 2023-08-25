@@ -22,5 +22,16 @@ public class AppTest
         Assertions.assertEquals(expected, result, " The sum of 2 + 3 should be 5");
 
     }
+
+      @Test
+    void subtract() {
+        // when
+        int result = app.subtract(8, 3);
+        // then
+        int expected = 5;
+        // verify that result = expected
+        Assertions.assertEquals(expected, result, " The sum of 8 - 3 should be 5");
+
+    }
  
 }
