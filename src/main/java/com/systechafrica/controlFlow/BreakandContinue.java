@@ -34,11 +34,25 @@ public class BreakandContinue {
     LOGGER.info("After my loop");
 
  }
+
+
+   public void returnStatement() {
+    for(int i = 0; i < 10; i++) {
+        if(i == 5) {
+            return;
+        }
+
+        System.out.println("My Index is - " + i);
+    }
+    LOGGER.info("After my loop");
+
+ }
     public static void main(String[] args) {
 
         BreakandContinue app = new BreakandContinue();
         app.breakStatement();
         app.continueStatement();
+        app.returnStatement();
 
     }
     
