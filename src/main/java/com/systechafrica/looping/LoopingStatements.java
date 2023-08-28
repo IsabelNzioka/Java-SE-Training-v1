@@ -36,10 +36,21 @@ public class LoopingStatements {
         }
     }
 
+
+    public void doWhile() {
+        int count = 3;
+        do {
+            LOGGER.info("Hello Java Queen");
+            count--;
+        } while (count > 0);
+        
+    }
+
       public static void main(String[] args) {
        LoopingStatements app = new LoopingStatements();
        app.forLoop();
        app.whileLoops();
+       app.doWhile();
         
      
      }

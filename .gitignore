@@ -23,6 +23,8 @@ src/main/resources/log____________4j.properties/hs_err_pid19022.log
 wildfly-server
 *.ipr
 
+# src/main/operators/MoreOnOperators.java
+
 # Compiled class file
 *.class
 

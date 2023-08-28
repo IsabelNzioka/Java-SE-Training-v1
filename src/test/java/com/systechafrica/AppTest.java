@@ -23,7 +23,7 @@ public class AppTest
 
     }
 
-      @Test
+    @Test
     void subtract() {
         // when
         int result = app.subtract(8, 3);
