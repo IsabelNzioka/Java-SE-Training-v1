@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "BreakandContinue",
+      "request": "launch",
+      "mainClass": "com.systechafrica.controlFlow.BreakandContinue",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "StringClass",
       "request": "launch",
       "mainClass": "com.systechafrica.stringClass.StringClass",

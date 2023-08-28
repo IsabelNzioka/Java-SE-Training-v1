@@ -22,7 +22,7 @@ public class LoopingStatements {
     }
 
     public void whileLoops() {
-        int studentCount = 0;
+        int studentCount = 0;  //gets executed when the condition is met
         int counter = 10;
 
 
@@ -38,7 +38,7 @@ public class LoopingStatements {
 
 
     public void doWhile() {
-        int count = 3;
+        int count = 3;  //It gets executed at least once
         do {
             LOGGER.info("Hello Java Queen");
             count--;
