@@ -19,52 +19,52 @@ public class ATMApplication {
 
 
     private void withdrawalTransaction() {
-            System.out.print("Enter amount to withdraw: ");
-            int amount = scanner.nextInt();
-            double transactionFee = ( 2.0/100 * amount);
+        System.out.print("Enter amount to withdraw: ");
+        int amount = scanner.nextInt();
+        double transactionFee = ( 2.0/100 * amount);
 
-             if( (balance - amount) < 0) {
-             System.out.print("Insufficient Amount \n");
-              } else {
-                        
-              // withdrawCharges = withdrawCharges +  ( 2.0/100 * amount); // for the bank
-               balance = balance - amount - transactionFee;
-                System.out.println("Your new balance is: " + balance);
-                 }
+        if( (balance - amount) < 0) {
+        System.out.print("Insufficient Amount \n");
+        } else {
+                            
+        // withdrawCharges = withdrawCharges +  ( 2.0/100 * amount); // for the bank
+        balance = balance - amount - transactionFee;
+        System.out.println("Your new balance is: " + balance);
+        }
 
-                // TODO use flat to fomat the receipts transactions.
-                receipt.append("WITHDRAWAL  AMOUNT:      ").append(amount).append("\n");
-                 receipt.append("TRANSACTION FEE:        ").append(transactionFee).append("\n");
+        // TODO use flat to fomat the receipts transactions.
+         receipt.append("WITHDRAWAL  AMOUNT:      ").append(amount).append("\n");
+         receipt.append("TRANSACTION FEE:        ").append(transactionFee).append("\n");
     }
 
 
     private void depositTransactions() {
-          System.out.print("Enter the deposit amount: ");
-           int amount = scanner.nextInt();
+        System.out.print("Enter the deposit amount: ");
+        int amount = scanner.nextInt();
 
-            balance = balance + amount;
-            System.out.println("Your new balance is: " + balance);
+        balance = balance + amount;
+        System.out.println("Your new balance is: " + balance);
 
-             // Appending the transactions to the Stringbuilder to send them as a receipt to the user
-            String amountFormatingUsingFlat = String.format("DEPOSIT AMOUNT: %20d%n", amount);
-            receipt.append(amountFormatingUsingFlat);
+        // Appending the transactions to the Stringbuilder to send them as a receipt to the user
+        String amountFormatingUsingFlat = String.format("DEPOSIT AMOUNT: %20d%n", amount);
+        receipt.append(amountFormatingUsingFlat);
 
     }
     
-    private void transferFundsTRansactions() {
-            System.out.print("Enter the transfer amount: ");
-            int amount = scanner.nextInt();
-            balance = balance - amount;
-            System.out.println("Your new balance is: " + balance);
+    private void transferFundsTransactions() {
+        System.out.print("Enter the transfer amount: ");
+        int amount = scanner.nextInt();
+        balance = balance - amount;
+        System.out.println("Your new balance is: " + balance);
 
-              // Appending the transactions to the Stringbuilder to send them as a receipt to the user
-            String amountFormatingUsingFlat = String.format("TRANSFER AMOUNT: %20d%n", amount);
-            receipt.append(amountFormatingUsingFlat);
+        // Appending the transactions to the Stringbuilder to send them as a receipt to the user
+        String amountFormatingUsingFlat = String.format("TRANSFER AMOUNT: %20d%n", amount);
+        receipt.append(amountFormatingUsingFlat);
 
           
     }
     
-   private void printReceits(){
+   private void printReceipts(){
         System.out.println("--------------------  RECEIPT --------------- ");
         System.out.println("*********************************************");
 
@@ -105,7 +105,7 @@ public class ATMApplication {
                        int option = scanner.nextInt();
                        scanner.nextLine();
 
-                        // TODO --------- TRY USING SWITCH STATEMENTS FRO THE VARIOUS OPTIONS.
+                    // TODO --------- TRY USING SWITCH STATEMENTS FRO THE VARIOUS OPTIONS.
 
                     if (option == 1) {
                         System.out.println("Your balance is: Ksh " + balance);
@@ -119,12 +119,12 @@ public class ATMApplication {
                          Thread.sleep(3000);
                        
                     } else if (option == 4) {
-                        transferFundsTRansactions();
+                        transferFundsTransactions();
                         Thread.sleep(3000);
                         
                     } else if (option == 5) {
                         // Quit - isUserActive = false;
-                        printReceits();
+                        printReceipts();
                         break; 
 
                     } else {
