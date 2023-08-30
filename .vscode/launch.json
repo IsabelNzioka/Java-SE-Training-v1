@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "UserInputUsingScanner",
+      "request": "launch",
+      "mainClass": "com.systechafrica.userInput.UserInputUsingScanner",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "ATMApplication",
       "request": "launch",
       "mainClass": "com.systechafrica.atmApplication.ATMApplication",

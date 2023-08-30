@@ -8,11 +8,12 @@ public class ATMApplication {
        Scanner scanner = new Scanner(System.in);
 
         // defaults
-        String defaultPassword = "Admin123";
-        double balance = 1000.0;
+        private static final  String DEFAULTPASSWORD = "Admin123";
 
         int attemptsCount = 3;
         boolean isUserActive = true;
+
+        double balance = 1000.0;
         double withdrawCharges = 0.0;
 
         StringBuilder receipt = new StringBuilder();
@@ -84,7 +85,7 @@ public class ATMApplication {
             String password = scanner.nextLine();
 
 
-            if (password.equals(defaultPassword)) {
+            if (password.equals(DEFAULTPASSWORD)) {
                 while (isUserActive) {
                     System.out.println("************************************\n");
                     System.out.println("ATM SIMULATOR\n");
