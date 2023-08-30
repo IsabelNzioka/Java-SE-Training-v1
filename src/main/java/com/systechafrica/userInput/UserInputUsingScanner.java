@@ -33,12 +33,12 @@ public class UserInputUsingScanner {
 
 
         // READING BOOLEAN
-         System.out.print("Are you a student? (true/fale): ");
+         System.out.print("Are you a student? (true/false): ");
          boolean isStudent = scanner.nextBoolean();
           System.out.println("Student status: " + isStudent);
 
         //READING MULTIPLE VALUES ON A SINGLE LINE
-         System.out.print("Enter three numers (space-separated)");
+         System.out.print("Enter three numbers (space-separated): ");
          int num1 = scanner.nextInt();
          int num2 = scanner.nextInt();
          int num3 = scanner.nextInt();

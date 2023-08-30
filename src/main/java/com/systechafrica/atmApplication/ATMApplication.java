@@ -34,8 +34,14 @@ public class ATMApplication {
         }
 
         // TODO use flat to fomat the receipts transactions.
-         receipt.append("WITHDRAWAL  AMOUNT:      ").append(amount).append("\n");
-         receipt.append("TRANSACTION FEE:        ").append(transactionFee).append("\n");
+
+         // Appending the transactions to the Stringbuilder to send them as a receipt to the user
+        String amountFormatingUsingFlat= String.format("WITHDRAWAL  AMOUNT: %20d%n", amount);
+        receipt.append(amountFormatingUsingFlat);
+
+         String chargesFormatingUsingFlat= String.format("TRANSACTION FEE: %20.2f%n", transactionFee); //double
+        receipt.append(chargesFormatingUsingFlat);
+         
     }
 
 
@@ -69,6 +75,7 @@ public class ATMApplication {
         System.out.println("--------------------  RECEIPT --------------- ");
         System.out.println("*********************************************");
 
+        receipt.append(" -----------            ---------------").append("\n");
         String amountFormatingUsingFlat = String.format("YOUR BALANCE IS: %20.2f%n", balance);
         receipt.append(amountFormatingUsingFlat);
 
@@ -151,7 +158,7 @@ public class ATMApplication {
     }
   
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException  {
       ATMApplication app = new ATMApplication();
       app.atmTransactions();
        
