@@ -64,7 +64,7 @@ private static final Logger LOGGER = Logger.getLogger(StringClass.class.getName(
 
 
         String str3 = "Java Program";
-        String str4 = str1.replace('a', 'z');
+       
 
         System.out.println(str1);
         System.out.println(str2);

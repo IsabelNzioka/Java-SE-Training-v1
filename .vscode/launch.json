@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ATMApplication",
+      "request": "launch",
+      "mainClass": "com.systechafrica.atmApplication.ATMApplication",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "WorkingWithArrays",
       "request": "launch",
       "mainClass": "com.systechafrica.arrays.WorkingWithArrays",
