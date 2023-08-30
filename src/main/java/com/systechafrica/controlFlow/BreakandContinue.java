@@ -44,8 +44,17 @@ public class BreakandContinue {
 
         System.out.println("My Index is - " + i);
     }
-    LOGGER.info("After my loop");
+    LOGGER.info("After my loop"); // does not execute, returned before it was reached
 
+ }
+
+ public int search(int numberToSearch) {
+    for(int index = 0; index < 50; index++) {
+        if(index == numberToSearch) {
+            return index;
+        }
+    }
+    return -1;
  }
     public static void main(String[] args) {
 
@@ -53,6 +62,7 @@ public class BreakandContinue {
         app.breakStatement();
         app.continueStatement();
         app.returnStatement();
+        
 
     }
     
