@@ -21,7 +21,15 @@ public class StringBuilders {
     LOGGER.info(" "+ equals);
     
 
-StringBuilder str1 = new StringBuilder(5);
+     StringBuilder name = new StringBuilder();
+     name.append("Isabel\n");
+     name.append("Nzioka");
+     System.out.println(name);
+     
+
+
+
+     StringBuilder str1 = new StringBuilder(5);
         String str2 = "";
 
 
