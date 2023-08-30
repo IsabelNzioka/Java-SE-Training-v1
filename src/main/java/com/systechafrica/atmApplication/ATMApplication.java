@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class ATMApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         Scanner scanner = new Scanner(System.in);
 
         // defaults
@@ -17,6 +17,8 @@ public class ATMApplication {
         boolean isUserActive = true;
         double withdrawCharges = 0.0;
 
+
+        // 
         while (attemptsCount > 0) {
             System.out.print("Please enter your PASSWORD: ");
             String password = scanner.nextLine();
@@ -42,12 +44,16 @@ public class ATMApplication {
 
                     if (option == 1) {
                         System.out.println("Your balance is: Ksh " + balance);
+                        Thread.sleep(3000);
+                        
                         
                     } else if (option == 2) {
                         System.out.print("Enter the deposit amount: ");
                         int amount = scanner.nextInt();
 
                         balance = balance + amount;
+                        System.out.println("Your new balance is: " + balance);
+                        Thread.sleep(3000);
                     } else if (option == 3) {
                         System.out.print("Enter amount to withdraw: ");
                         int amount = scanner.nextInt();
@@ -56,15 +62,18 @@ public class ATMApplication {
                           System.out.print("Insufficient Amount \n");
                          } else {
 
-                        withdrawCharges = withdrawCharges +  ( 2.0/100 * amount);
+                        // withdrawCharges = withdrawCharges +  ( 2.0/100 * amount); // for the bank
                         balance = balance - amount - ( 2.0/100 * amount);
-                        System.out.println("Your new balance is: " + balance + "  charges " + withdrawCharges);
+                        System.out.println("Your new balance is: " + balance);
                          }
+                         Thread.sleep(3000);
                        
                     } else if (option == 4) {
                          System.out.print("Enter the transfer amount: ");
                         int amount = scanner.nextInt();
                         balance = balance - amount;
+                        System.out.println("Your new balance is: " + balance);
+                        Thread.sleep(3000);
                         
                     } else if (option == 5) {
                         // Quit - isUserActive = false;
