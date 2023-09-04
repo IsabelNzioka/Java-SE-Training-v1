@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Calculator",
+      "request": "launch",
+      "mainClass": "com.systechafrica.maths.Calculator",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "ATMApplicationMhusika",
       "request": "launch",
       "mainClass": "com.systechafrica.atmApplication.ATMApplicationMhusika",

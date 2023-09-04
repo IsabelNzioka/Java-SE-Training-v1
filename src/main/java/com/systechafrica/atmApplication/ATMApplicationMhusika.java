@@ -128,8 +128,6 @@ public class ATMApplicationMhusika {
         // ? add the amount to the balance
         runningBalance += amountToDeposit; // runningBalance = runningBalance + amountToDeposit
 
-
-
     }
     public void performWithdrawal() {
         // ? get the amount to withdraw

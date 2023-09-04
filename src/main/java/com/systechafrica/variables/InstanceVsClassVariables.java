@@ -31,6 +31,7 @@ public class InstanceVsClassVariables {
 
 
     public static void main(String[] args) {
+        InstanceVsClassVariables app = new InstanceVsClassVariables();
         SampleClass vc = new SampleClass();
 
         System.out.println( SampleClass.name); // Class variables  - can only be accessed using the class name followed by the variable name.
@@ -41,7 +42,9 @@ public class InstanceVsClassVariables {
 
         // System.out.println(vc.name); //? can be accessed using the vc object BUT it is NOT the recommended way!
 
-
+        System.out.println(app.message3);
+        System.out.println(app.message2);
+        System.out.println(message);
         
         
     }
