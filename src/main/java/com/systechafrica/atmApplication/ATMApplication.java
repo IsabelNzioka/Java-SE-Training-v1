@@ -112,31 +112,31 @@ public class ATMApplication {
                        int option = scanner.nextInt();
                        scanner.nextLine();
 
-                    // TODO --------- TRY USING SWITCH STATEMENTS FRO THE VARIOUS OPTIONS.
+                        // TODO --------- TRY USING SWITCH STATEMENTS FRO THE VARIOUS OPTIONS.
 
-                    if (option == 1) {
-                        System.out.println("Your balance is: Ksh " + balance);
-                        Thread.sleep(3000);
+                        if (option == 1) {
+                            System.out.println("Your balance is: Ksh " + balance);
+                            Thread.sleep(3000);
+                            
+                        } else if (option == 2) {
+                            depositTransactions();
+                            Thread.sleep(3000);
+                        } else if (option == 3) {
+                            withdrawalTransaction();
+                            Thread.sleep(3000);
                         
-                    } else if (option == 2) {
-                        depositTransactions();
-                        Thread.sleep(3000);
-                    } else if (option == 3) {
-                        withdrawalTransaction();
-                         Thread.sleep(3000);
-                       
-                    } else if (option == 4) {
-                        transferFundsTransactions();
-                        Thread.sleep(3000);
-                        
-                    } else if (option == 5) {
-                        // Quit - isUserActive = false;
-                        printReceipts();
-                        break; 
+                        } else if (option == 4) {
+                            transferFundsTransactions();
+                            Thread.sleep(3000);
+                            
+                        } else if (option == 5) {
+                            // Quit - isUserActive = false;
+                            printReceipts();
+                            break; 
 
-                    } else {
-                        System.out.println("Invalid option. Please choose a valid option.");
-                    }
+                        } else {
+                            System.out.println("Invalid option. Please choose a valid option.");
+                        }
                     }catch(InputMismatchException e) {
                         System.out.println("Invalid input. Please enter a valid option as a number.");
                         scanner.nextLine();
