@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "InstanceVsClassVariables",
+      "request": "launch",
+      "mainClass": "com.systechafrica.variables.InstanceVsClassVariables",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "VariableScopes",
+      "request": "launch",
+      "mainClass": "com.systechafrica.variables.VariableScopes",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "UserInputUsingScanner",
       "request": "launch",
       "mainClass": "com.systechafrica.userInput.UserInputUsingScanner",

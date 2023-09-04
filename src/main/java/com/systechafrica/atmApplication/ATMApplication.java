@@ -28,13 +28,12 @@ public class ATMApplication {
         System.out.print("Insufficient Amount \n");
         } else {
                             
-        // withdrawCharges = withdrawCharges +  ( 2.0/100 * amount); // for the bank
+        // withdrawCharges = withdrawCharges +  transactionFee; // for the bank
         balance = balance - amount - transactionFee;
         System.out.println("Your new balance is: " + balance);
         }
 
-        // TODO use flat to fomat the receipts transactions.
-
+      
          // Appending the transactions to the Stringbuilder to send them as a receipt to the user
         String amountFormatingUsingFlat= String.format("WITHDRAWAL  AMOUNT: %20d%n", amount);
         receipt.append(amountFormatingUsingFlat);
