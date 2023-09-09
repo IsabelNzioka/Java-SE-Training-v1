@@ -2,14 +2,14 @@ package com.systechafrica.pos;
 
 public class Item {
 
-    private String itemCode;
+    private int itemCode;
     private int quantity;
     private int unitPrice;
     private int totalValue;
 
 
     // Setting the property values using the Constructor.
-    public Item(String itemCode, int quantity, int unitPrice) {
+    public Item(int itemCode, int quantity, int unitPrice) {
         this.itemCode = itemCode;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
@@ -18,11 +18,11 @@ public class Item {
 
 
     // Setting and getting access to the properties using Setters and Getters.
-    public String getItemCode() {
+    public int getItemCode() {
         return itemCode;
     }
 
-    public void setItemCode(String itemCode) {
+    public void setItemCode(int itemCode) {
         this.itemCode = itemCode;
     }
 

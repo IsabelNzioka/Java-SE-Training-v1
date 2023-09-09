@@ -38,7 +38,7 @@ public class Store {
     public void addItems(int noOfItemsToPurchase, Item[] items) {
          for (int i = 0; i < items.length; i++) {
             System.out.print("Enter the Item Code: ");
-            String itemCode = scanner.next();
+            int itemCode = scanner.nextInt();
                 
             System.out.print("Enter the quantity: ");
             int quantity = scanner.nextInt();
