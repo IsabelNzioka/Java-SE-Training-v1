@@ -10,10 +10,9 @@ public class RestaurantTest {
 
      @Test
     public void testOrder() {
-        // Create an instance of Order
         Order order = new Order();
 
-        // Set values for chai and andazi
+    
         order.setChai(200);
         order.setAndazi(100);
 

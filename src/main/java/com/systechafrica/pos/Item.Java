@@ -16,9 +16,15 @@ public class Item {
         this.itemCode = itemCode;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
-        this.totalValue = quantity * unitPrice;
+        // this.totalValue = quantity * unitPrice;
+        updateTotalValue();
     }
 
+
+    private void updateTotalValue() {
+        this.totalValue = this.quantity * this.unitPrice;
+    }
+   
 
     // Setting and getting access to the properties using Setters and Getters.
     public int getItemCode() {
@@ -35,6 +41,8 @@ public class Item {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+        updateTotalValue();
+       
     }
 
     public int getUnitPrice() {
@@ -43,14 +51,17 @@ public class Item {
 
     public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
+        updateTotalValue();
+      
     }
 
-    public int getTotalValue() {
-        return totalValue;
-    }
+   
 
     public void setTotalValue(int quantity, int unitPrice) {
         this.totalValue = quantity * unitPrice;
+    }
+    public int getTotalValue() {
+        return totalValue;
     }
 
 
