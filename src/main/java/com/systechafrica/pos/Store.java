@@ -32,26 +32,23 @@ public class Store {
         System.out.println("-------------------------------------");
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
-        System.out.println("3. DISPLAY RECEIPT");
-
-        System.out.println("choose an option");      
+        System.out.println("3. DISPLAY RECEIPT");     
     }
 
-     public void addItems(int noOfItemsToPurchase, Item[] items) {
+    public void addItems(int noOfItemsToPurchase, Item[] items) {
          for (int i = 0; i < items.length; i++) {
-                    System.out.print("Enter the Item Code: ");
-                    String itemCode = scanner.next();
+            System.out.print("Enter the Item Code: ");
+            String itemCode = scanner.next();
                 
-                    System.out.print("Enter the quantity: ");
-                    int quantity = scanner.nextInt();
+            System.out.print("Enter the quantity: ");
+            int quantity = scanner.nextInt();
 
-                    System.out.print("Enter the unit price: ");
-                    int unitPrice = scanner.nextInt();
+            System.out.print("Enter the unit price: ");
+            int unitPrice = scanner.nextInt();
 
-                    Item s = new Item(itemCode, quantity, unitPrice);
-                    items[i] = s;
-                }
-
+            Item s = new Item(itemCode, quantity, unitPrice);
+            items[i] = s;
+        }
     }
 
 
@@ -59,6 +56,7 @@ public class Store {
     public static void main(String[] args) {
         Store app = new Store();
         boolean isLoggedIn = app.login();
+        boolean keepShowingMenu = true;
     
 
          if(isLoggedIn) {
@@ -67,26 +65,51 @@ public class Store {
               app.scanner.nextLine(); 
 
               Item[] items = new Item[noOfItems];
-              app.addItems(noOfItems, items);
-         
-                // for (int i = 0; i < items.length; i++) {
-                //     System.out.print("Enter the Item Code: ");
-                //     String itemCode = app.scanner.next();
-                
-                //     System.out.print("Enter the quantity: ");
-                //     int quantity = app.scanner.nextInt();
+              
 
-                //     System.out.print("Enter the unit price: ");
-                //     int unitPrice = app.scanner.nextInt();
+              while(keepShowingMenu) {
+                app.displayMenu();
 
-                //     Item s = new Item(itemCode, quantity, unitPrice);
-                //     items[i] = s;
-                // }
+                try {
+                    System.out.println("Choose your option");
+                    int option = app.scanner.nextInt();
 
-                for(Item i: items) {
-                    System.out.println(i);
-                    System.out.println(count += i.getTotalValue());
+                    if(option == 1) {
+                          app.addItems(noOfItems, items);
+
+                          System.out.println("Would you like to add another items?: Y/N");
+                          String continueShopping = app.scanner.next();
+
+                          if(continueShopping.equalsIgnoreCase("Y")) {
+                               System.out.println(("How many items would you like to add?"));
+                               int noOfItemsToAdd = app.scanner.nextInt();
+                               noOfItems = noOfItemsToAdd;
+                               items = new Item[noOfItems];
+                          
+                               System.out.println("Happy Shopping Customer :)");
+                          } else {
+                            keepShowingMenu = false;
+                            // Print receipt
+                          }
+
+                    } else if(option == 2) {
+                        // make payment
+
+                    }else if(option == 3) {
+                        // display receipt
+                        // quit
+                    } else {
+                            System.out.println("Invalid option... try again");
+                        }
+                    
+                } catch (Exception e) {
+                    app.scanner.nextLine();
+                    System.out.println("Invalid option - Integers only... try again");
+                  
                 }
+              }
+
+          
          } else {
             System.out.println("Maximum attempts failed"); 
          }
