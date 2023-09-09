@@ -7,14 +7,18 @@ import java.util.Scanner;
 public class Store {
     Scanner scanner = new Scanner(System.in);
     final String DEFAULT_PASSWORD = "Admin123";
-    int change; 
+ 
     public static int totalPayment;
     static int noOfItemsToPurchase = 0;
     // static Item[] items = new Item[noOfItemsToPurchase];
-
-     static ArrayList<Item> items = new ArrayList<>();
+    static ArrayList<Item> items = new ArrayList<>();
     static boolean isCustomerShopping = true;
-    int currentItemIndex = 0;
+    static boolean isPaymentMade = false;
+     int change;
+    
+     int amountPaidByCustomer = 0;
+
+   
 
     public boolean login() {
         int loginEnteries = 1;
@@ -46,7 +50,6 @@ public class Store {
         int noOfItemsToPurchase = scanner.nextInt();
         scanner.nextLine();
 
-    
         for (int i = 0; i < noOfItemsToPurchase; i++) {
             System.out.print("Enter the Item Code: ");
             int itemCode = scanner.nextInt();
@@ -58,15 +61,13 @@ public class Store {
             System.out.print("Enter the unit price: ");
             int unitPrice = scanner.nextInt();
 
-
             totalPayment += (quantity * unitPrice); 
 
             // Add item to the items array
             Item s = new Item(itemCode, quantity, unitPrice);
 
             // items[i] = s;
-            items.add(s);
-               
+            items.add(s);  //keep track of all added items       
         }
     }
 
@@ -81,17 +82,40 @@ public class Store {
         System.out.println("TOTAL:     " + totalPayment);
 
         System.out.println("Enter the amount given by customer");
-        int amount = scanner.nextInt();
+        amountPaidByCustomer = scanner.nextInt();
         scanner.nextLine();
 
-        if(amount > totalPayment) {
-            change = amount - totalPayment;
+        if(amountPaidByCustomer > totalPayment) {
+            change = amountPaidByCustomer - totalPayment;
         } 
 
         System.out.println("Change:     " + change);
         System.out.println("***************************************************");
         System.out.println("THANK YOU FOR SHOPPING WITH US");
         System.out.println("***************************************************");
+
+        isPaymentMade = true;
+
+    }
+
+
+    public void displayReceipt() {
+       
+                System.out.println("_________________________________________________");
+                System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
+                for (Item item : items) {
+                    System.out.printf("%-10s %-12s %-9s %-10s%n", item.getItemCode(),item.getQuantity(), item.getUnitPrice(), item.getTotalValue());
+                
+                }
+                System.out.println("___________________________________________________");
+                System.out.println("TOTAL:     " + totalPayment);
+                System.out.println("Amount paid: " + amountPaidByCustomer);
+                System.out.println("Change:     " + change);
+                System.out.println("***************************************************");
+                System.out.println("THANK YOU FOR SHOPPING WITH US");
+                System.out.println("***************************************************");
+
+        
 
     }
     
@@ -132,8 +156,15 @@ public class Store {
                         // make payment
                         app.payment();
                     } else if (option == 3) {
-                        // display receipt
-                        keepShowingMenu = false;
+                        if(isPaymentMade) {
+                           // display receipt then quit
+                            app.displayReceipt();
+                            keepShowingMenu = false;
+                        } else {
+                            System.out.println("Please make the payment first before printing the receipt");
+                        }
+                      
+                       
                     } else {
                         System.out.println("Invalid option... try again");
                     }

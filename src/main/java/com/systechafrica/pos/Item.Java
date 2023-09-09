@@ -51,9 +51,9 @@ public class Item {
     }
 
 
-    @Override
-    public String toString() {
-        return this.itemCode + "    " + this.quantity + "    " + this.unitPrice + "    " + this.totalValue;
-    }
+    // @Override
+    // public String toString() {
+    //     return this.itemCode + "    " + this.quantity + "    " + this.unitPrice + "    " + this.totalValue;
+    // }
     
 }
