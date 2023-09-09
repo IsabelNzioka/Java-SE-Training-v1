@@ -6,6 +6,7 @@ public class LibraryManagementSystem {
         Book book = new Book();
         book.isbn = "67459475957493";
         book.title = "Java Programming";   //!  Accessed here because they both in the same package
+        book.printBookDetails();
     }
     
 }
