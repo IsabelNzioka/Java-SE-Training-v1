@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Store",
+      "request": "launch",
+      "mainClass": "com.systechafrica.pos.Store",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "StudentMS",
       "request": "launch",
       "mainClass": "com.systechafrica.part2.encapsulation.StudentMS",
