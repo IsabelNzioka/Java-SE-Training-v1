@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Store {
     Scanner scanner = new Scanner(System.in);
     final String DEFAULT_PASSWORD = "Admin123";
-    public static int count;
+    public static int totalPayment;
 
     public boolean login() {
 
@@ -46,8 +46,14 @@ public class Store {
             System.out.print("Enter the unit price: ");
             int unitPrice = scanner.nextInt();
 
+            //add all the prices here
+            totalPayment += (quantity * unitPrice);
+
+            // add the item to the items array
             Item s = new Item(itemCode, quantity, unitPrice);
             items[i] = s;
+
+            
         }
     }
 
@@ -60,6 +66,7 @@ public class Store {
     
 
          if(isLoggedIn) {
+              System.out.println("Happy Shopping Customer :) ");
               System.out.print("Enter the number of items to purchase: ");
               int noOfItems = app.scanner.nextInt(); 
               app.scanner.nextLine(); 
@@ -87,10 +94,10 @@ public class Store {
                                items = new Item[noOfItems];
                           
                                System.out.println("Happy Shopping Customer :)");
-                          } else {
-                            keepShowingMenu = false;
-                            // Print receipt
-                          }
+                          } 
+                        //   else {
+                            // System.out.println(totalPayment);
+                        //   }
 
                     } else if(option == 2) {
                         // make payment
