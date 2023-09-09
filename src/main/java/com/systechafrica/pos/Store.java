@@ -14,8 +14,8 @@ public class Store {
     static ArrayList<Item> items = new ArrayList<>();
     static boolean isCustomerShopping = true;
     static boolean isPaymentMade = false;
+
      int change;
-    
      int amountPaidByCustomer = 0;
 
    
@@ -95,12 +95,10 @@ public class Store {
         System.out.println("***************************************************");
 
         isPaymentMade = true;
-
     }
 
 
     public void displayReceipt() {
-       
                 System.out.println("_________________________________________________");
                 System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
                 for (Item item : items) {
@@ -114,9 +112,6 @@ public class Store {
                 System.out.println("***************************************************");
                 System.out.println("THANK YOU FOR SHOPPING WITH US");
                 System.out.println("***************************************************");
-
-        
-
     }
     
     public static void main(String[] args) {
@@ -163,8 +158,7 @@ public class Store {
                         } else {
                             System.out.println("Please make the payment first before printing the receipt");
                         }
-                      
-                       
+                          
                     } else {
                         System.out.println("Invalid option... try again");
                     }

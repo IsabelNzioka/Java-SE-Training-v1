@@ -7,6 +7,9 @@ public class Item {
     private int unitPrice;
     private int totalValue;
 
+    public  Item() {
+        
+    }
 
     // Setting the property values using the Constructor.
     public Item(int itemCode, int quantity, int unitPrice) {
