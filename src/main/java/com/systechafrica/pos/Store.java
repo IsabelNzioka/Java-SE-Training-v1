@@ -1,16 +1,22 @@
 package com.systechafrica.pos;
 
+
+import java.util.ArrayList;
 import java.util.Scanner;
-
-
 
 public class Store {
     Scanner scanner = new Scanner(System.in);
     final String DEFAULT_PASSWORD = "Admin123";
+    int change; 
     public static int totalPayment;
+    static int noOfItemsToPurchase = 0;
+    // static Item[] items = new Item[noOfItemsToPurchase];
+
+     static ArrayList<Item> items = new ArrayList<>();
+    static boolean isCustomerShopping = true;
+    int currentItemIndex = 0;
 
     public boolean login() {
-
         int loginEnteries = 1;
         boolean loggedIn = false;
         while(loginEnteries <= 3) {
@@ -23,7 +29,7 @@ public class Store {
             System.out.println("Wrong password");
             loginEnteries++;
         }
-        return loggedIn;     
+        return loggedIn;
     }
 
     public void displayMenu() {
@@ -32,96 +38,113 @@ public class Store {
         System.out.println("-------------------------------------");
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
-        System.out.println("3. DISPLAY RECEIPT");     
+        System.out.println("3. DISPLAY RECEIPT");  
     }
 
-    public void addItems(int noOfItemsToPurchase, Item[] items) {
-         for (int i = 0; i < items.length; i++) {
+    public void addItems() {
+        System.out.print("Enter the number of items to purchase: ");
+        int noOfItemsToPurchase = scanner.nextInt();
+        scanner.nextLine();
+
+    
+        for (int i = 0; i < noOfItemsToPurchase; i++) {
             System.out.print("Enter the Item Code: ");
             int itemCode = scanner.nextInt();
-                
-            System.out.print("Enter the quantity: ");
+    
+             System.out.print("Enter the quantity: ");
             int quantity = scanner.nextInt();
-
+            scanner.nextLine(); 
+    
             System.out.print("Enter the unit price: ");
             int unitPrice = scanner.nextInt();
 
-            //add all the prices here
-            totalPayment += (quantity * unitPrice);
 
-            // add the item to the items array
+            totalPayment += (quantity * unitPrice); 
+
+            // Add item to the items array
             Item s = new Item(itemCode, quantity, unitPrice);
-            items[i] = s;
 
-            
+            // items[i] = s;
+            items.add(s);
+               
         }
     }
 
+    public void payment() {
+        System.out.println("_________________________________________________");
+        System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
+        for (Item item : items) {
+            System.out.printf("%-10s %-12s %-9s %-10s%n", item.getItemCode(),item.getQuantity(), item.getUnitPrice(), item.getTotalValue());
+           
+        }
+        System.out.println("___________________________________________________");
+        System.out.println("TOTAL:     " + totalPayment);
 
+        System.out.println("Enter the amount given by customer");
+        int amount = scanner.nextInt();
+        scanner.nextLine();
 
+        if(amount > totalPayment) {
+            change = amount - totalPayment;
+        } 
+
+        System.out.println("Change:     " + change);
+        System.out.println("***************************************************");
+        System.out.println("THANK YOU FOR SHOPPING WITH US");
+        System.out.println("***************************************************");
+
+    }
+    
     public static void main(String[] args) {
         Store app = new Store();
         boolean isLoggedIn = app.login();
         boolean keepShowingMenu = true;
-    
 
-         if(isLoggedIn) {
-              System.out.println("Happy Shopping Customer :) ");
-              System.out.print("Enter the number of items to purchase: ");
-              int noOfItems = app.scanner.nextInt(); 
-              app.scanner.nextLine(); 
+        if (isLoggedIn) {
+            System.out.println("Happy Shopping Customer :) ");
 
-              Item[] items = new Item[noOfItems];
-              
-
-              while(keepShowingMenu) {
+            while (keepShowingMenu) {
+                // Y -continue shopping
+                // N - showMenu 
                 app.displayMenu();
-
+            
                 try {
                     System.out.println("Choose your option");
                     int option = app.scanner.nextInt();
+                    app.scanner.nextLine();
 
-                    if(option == 1) {
-                          app.addItems(noOfItems, items);
+                    if (option == 1 ) {
+                        while(isCustomerShopping) {
+                            app.addItems();
 
-                          System.out.println("Would you like to add another items?: Y/N");
-                          String continueShopping = app.scanner.next();
+                                System.out.println("Would you like to add more items?: Y/N");
+                                String continueShopping = app.scanner.next();
 
-                          if(continueShopping.equalsIgnoreCase("Y")) {
-                               System.out.println(("How many items would you like to add?"));
-                               int noOfItemsToAdd = app.scanner.nextInt();
-                               noOfItems = noOfItemsToAdd;
-                               items = new Item[noOfItems];
-                          
-                               System.out.println("Happy Shopping Customer :)");
-                          } 
-                        //   else {
-                            // System.out.println(totalPayment);
-                        //   }
-
-                    } else if(option == 2) {
-                        // make payment
-
-                    }else if(option == 3) {
-                        // display receipt
-                        // quit
-                    } else {
-                            System.out.println("Invalid option... try again");
+                                if(continueShopping.equalsIgnoreCase("N")) {
+                                    // end shopping - display menu
+                                    System.out.println(totalPayment);
+                                    isCustomerShopping=false;
+                                 }
                         }
-                    
+                        System.out.println("Thank you for shopping with us - Proceed to payment/receipt printing.");
+          
+                    } else if (option == 2) {
+                        // make payment
+                        app.payment();
+                    } else if (option == 3) {
+                        // display receipt
+                        keepShowingMenu = false;
+                    } else {
+                        System.out.println("Invalid option... try again");
+                    }
                 } catch (Exception e) {
                     app.scanner.nextLine();
                     System.out.println("Invalid option - Integers only... try again");
-                  
                 }
-              }
-
-          
-         } else {
+            }
+        } else {
             System.out.println("Maximum attempts failed"); 
-         }
+        }
         app.scanner.close();
     }
-
-  
 }
