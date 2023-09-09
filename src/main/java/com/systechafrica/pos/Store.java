@@ -26,7 +26,6 @@ public class Store {
         return loggedIn;     
     }
 
-
     public void displayMenu() {
         System.out.println("-----------------------------------");
         System.out.println("-----     SYSTEM POS SYSTEM    ----");
@@ -35,55 +34,62 @@ public class Store {
         System.out.println("2. MAKE PAYMENT");
         System.out.println("3. DISPLAY RECEIPT");
 
-        System.out.println("choose an option");
-
-        
+        System.out.println("choose an option");      
     }
+
+     public void addItems(int noOfItemsToPurchase, Item[] items) {
+         for (int i = 0; i < items.length; i++) {
+                    System.out.print("Enter the Item Code: ");
+                    String itemCode = scanner.next();
+                
+                    System.out.print("Enter the quantity: ");
+                    int quantity = scanner.nextInt();
+
+                    System.out.print("Enter the unit price: ");
+                    int unitPrice = scanner.nextInt();
+
+                    Item s = new Item(itemCode, quantity, unitPrice);
+                    items[i] = s;
+                }
+
+    }
+
 
 
     public static void main(String[] args) {
         Store app = new Store();
-        //  Scanner scanner = new Scanner(System.in);
         boolean isLoggedIn = app.login();
     
 
          if(isLoggedIn) {
               System.out.print("Enter the number of items to purchase: ");
-        int noOfItems = app.scanner.nextInt(); 
-        app.scanner.nextLine(); 
+              int noOfItems = app.scanner.nextInt(); 
+              app.scanner.nextLine(); 
 
-        Item[] items = new Item[noOfItems];
+              Item[] items = new Item[noOfItems];
+              app.addItems(noOfItems, items);
+         
+                // for (int i = 0; i < items.length; i++) {
+                //     System.out.print("Enter the Item Code: ");
+                //     String itemCode = app.scanner.next();
+                
+                //     System.out.print("Enter the quantity: ");
+                //     int quantity = app.scanner.nextInt();
 
+                //     System.out.print("Enter the unit price: ");
+                //     int unitPrice = app.scanner.nextInt();
 
-             
-          for (int i = 0; i < items.length; i++) {
-            System.out.print("Enter the Item Code: ");
-            String itemCode = app.scanner.next();
-          
-            System.out.print("Enter the quantity: ");
-            int quantity = app.scanner.nextInt();
+                //     Item s = new Item(itemCode, quantity, unitPrice);
+                //     items[i] = s;
+                // }
 
-            System.out.print("Enter the unit price: ");
-            int unitPrice = app.scanner.nextInt();
-
-            Item s = new Item(itemCode, quantity, unitPrice);
-            items[i] = s;
-        }
-    
-      
-      
-
-        for(Item i: items) {
-            System.out.println(i);
-             System.out.println(count += i.getTotalValue());
-        }
+                for(Item i: items) {
+                    System.out.println(i);
+                    System.out.println(count += i.getTotalValue());
+                }
          } else {
             System.out.println("Maximum attempts failed"); 
          }
-
-      
-   
-   
         app.scanner.close();
     }
 
