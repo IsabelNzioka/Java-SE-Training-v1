@@ -6,6 +6,27 @@
   "configurations": [
     {
       "type": "java",
+      "name": "AccessModifiers",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part2.accessmodifiers.AccessModifiers",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "AccessModifiersDemo",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part2.accessmodifiers.AccessModifiersDemo",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "MyClass",
+      "request": "launch",
+      "mainClass": "com.systechafrica.extras.MyClass",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "Calculator",
       "request": "launch",
       "mainClass": "com.systechafrica.maths.Calculator",

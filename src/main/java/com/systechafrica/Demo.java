@@ -20,3 +20,4 @@ public class Demo {
         demo.addTwoNumbers(5, 10);
         add(5, 10);  
 }
+}
