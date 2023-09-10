@@ -62,6 +62,8 @@ public class Item {
         return totalValue;
     }
 
+    //TODO - CHECK WHY GITHUB  BUILD WITH MAVEN IS FAILING - Error; cannot find symbol class Item.
+    // ? tests done locally are okay
 
     // @Override
     // public String toString() {
