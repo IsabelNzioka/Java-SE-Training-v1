@@ -10,6 +10,7 @@ public class Store {
  
     public static int totalPayment;
     static int noOfItemsToPurchase = 0;
+
     // static Item[] items = new Item[noOfItemsToPurchase];
     static ArrayList<Item> items = new ArrayList<>();
     static boolean isCustomerShopping = true;
@@ -141,7 +142,7 @@ public class Store {
 
                                 if(continueShopping.equalsIgnoreCase("N")) {
                                     // end shopping - display menu
-                                    System.out.println(totalPayment);
+                                    // System.out.println(totalPayment);
                                     isCustomerShopping=false;
                                  }
                         }
