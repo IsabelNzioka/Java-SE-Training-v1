@@ -1,5 +1,8 @@
 package com.systechafrica.restaurant;
 
+import java.util.ArrayList;
+
+
 public class Order {
 
     private int chai;
@@ -8,6 +11,9 @@ public class Order {
     private int ndenguAndAccompishments;
     private int beansAndAccompishments;
     private int pilauVeg;
+    private int totalValue;
+
+    // private ArrayList<String> customerOrders = new ArrayList<>();
 
 
      public Order() {
@@ -28,18 +34,19 @@ public class Order {
         return chai;
     }
 
-    public void setChai(int chai) {
-        this.chai = chai;
-
    
+    public void setChai(int chai) {
+        this.chai += chai;
+       
     }
 
     public int getAndazi() {
         return andazi;
     }
 
+
     public void setAndazi(int andazi) {
-        this.andazi = andazi;
+        this.andazi += andazi;
  
     }
 
@@ -48,7 +55,7 @@ public class Order {
     }
 
     public void setTosti(int tosti) {
-        this.tosti = tosti;
+        this.tosti += tosti;
     }
 
     public int getNdenguAndAccompishments() {
@@ -56,7 +63,7 @@ public class Order {
     }
 
     public void setNdenguAndAccompishments(int ndenguAndAccompishments) {
-        this.ndenguAndAccompishments = ndenguAndAccompishments;
+        this.ndenguAndAccompishments += ndenguAndAccompishments;
     }
 
     public int getBeansAndAccompishments() {
@@ -64,7 +71,7 @@ public class Order {
     }
 
     public void setBeansAndAccompishments(int beansAndAccompishments) {
-        this.beansAndAccompishments = beansAndAccompishments;
+        this.beansAndAccompishments += beansAndAccompishments;
     }
 
     public int getPilauVeg() {
@@ -72,7 +79,12 @@ public class Order {
     }
 
     public void setPilauVeg(int pilauVeg) {
-        this.pilauVeg = pilauVeg;
+        this.pilauVeg += pilauVeg;
+    }
+
+  
+    public int getTotalValue() {
+        return (this.chai + this.andazi + this.tosti + this.ndenguAndAccompishments + this.beansAndAccompishments + this.pilauVeg);
     }
 
    
