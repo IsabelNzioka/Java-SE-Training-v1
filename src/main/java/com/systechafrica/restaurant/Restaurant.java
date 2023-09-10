@@ -3,30 +3,13 @@ package com.systechafrica.restaurant;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.systechafrica.util.Login;
+
 public class Restaurant {
   Scanner scanner = new Scanner(System.in);
 
-  final String DEFAULT_PASSWORD = "Admin123";
   static boolean keepShowingMenu = true;
-
   static ArrayList<String> customerOrders = new ArrayList<>();
-
-  // TODO create a class for the login - utils
-  public boolean login() {
-    int loginEnteries = 1;
-    boolean loggedIn = false;
-    while(loginEnteries <= 3) {
-        System.out.println("Enter password");
-        String userPassword = scanner.nextLine();
-        if(userPassword.equals(DEFAULT_PASSWORD)) {
-            loggedIn = true;
-            break;
-        }
-        System.out.println("Wrong password");
-        loginEnteries++;
-    }
-    return loggedIn;
-}
 
 
   public void displayMenu() {
@@ -57,7 +40,7 @@ public class Restaurant {
   }
 
   public void payment(Order order) {
-      int totalOrderCost = order.getTotalValue();
+      int totalOrderCost = order.calculateTotalOrderCost();
       int balance = 0;
       System.out.println("Pay now For: ");
 
@@ -65,7 +48,7 @@ public class Restaurant {
         System.out.println(orderItem);
       }
       System.out.println("********************************************************");
-      System.out.println("Total:  ----------------------------------------------" + order.getTotalValue());
+      System.out.println("Total:  ----------------------------------------------" + totalOrderCost);
       System.out.println("Enter amount to pay: ");
       int amount = scanner.nextInt();
       if(amount > totalOrderCost) {
@@ -83,7 +66,9 @@ public class Restaurant {
     public static void main(String[] args) {
       Restaurant app = new Restaurant();
       Order order = new Order();
-      boolean isLoggedIn = app.login();
+
+
+      boolean isLoggedIn = Login.login();
 
       if(isLoggedIn) {
          System.out.println("Welcome to Systech Restaurant.");

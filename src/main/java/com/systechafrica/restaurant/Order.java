@@ -11,7 +11,7 @@ public class Order {
     private int ndenguAndAccompishments;
     private int beansAndAccompishments;
     private int pilauVeg;
-    private int totalValue;
+    
 
     // private ArrayList<String> customerOrders = new ArrayList<>();
 
@@ -83,7 +83,9 @@ public class Order {
     }
 
   
-    public int getTotalValue() {
+
+    // calculate total cost
+    public int calculateTotalOrderCost() {
         return (this.chai + this.andazi + this.tosti + this.ndenguAndAccompishments + this.beansAndAccompishments + this.pilauVeg);
     }
 

@@ -4,10 +4,11 @@ package com.systechafrica.pos;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+import com.systechafrica.util.Login;
+
 public class Store {
     Scanner scanner = new Scanner(System.in);
-    final String DEFAULT_PASSWORD = "Admin123";
- 
+  
     public static int totalPayment;
     static int noOfItemsToPurchase = 0;
 
@@ -19,23 +20,6 @@ public class Store {
      int change;
      int amountPaidByCustomer = 0;
 
-   
-
-    public boolean login() {
-        int loginEnteries = 1;
-        boolean loggedIn = false;
-        while(loginEnteries <= 3) {
-            System.out.println("Enter password");
-            String userPassword = scanner.nextLine();
-            if(userPassword.equals(DEFAULT_PASSWORD)) {
-                loggedIn = true;
-                break;
-            }
-            System.out.println("Wrong password");
-            loginEnteries++;
-        }
-        return loggedIn;
-    }
 
     public void displayMenu() {
         System.out.println("-----------------------------------");
@@ -117,7 +101,8 @@ public class Store {
     
     public static void main(String[] args) {
         Store app = new Store();
-        boolean isLoggedIn = app.login();
+
+        boolean isLoggedIn = Login.login();
         boolean keepShowingMenu = true;
 
         if (isLoggedIn) {
