@@ -1,7 +1,8 @@
 package com.systechafrica.part2.encapsulation;
 
 public class Student {
-    // ? Encapsulation is the
+    // ? Encapsulation is the principle of bundling data and methods together within a class,. It hides the internal details of the object and provides a public interface
+    // ? for interacting with it.
     private int id;
     private String regNo;
     private String name;
