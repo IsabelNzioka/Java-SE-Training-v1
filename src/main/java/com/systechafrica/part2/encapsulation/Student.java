@@ -1,6 +1,7 @@
 package com.systechafrica.part2.encapsulation;
 
 public class Student {
+    // ? Encapsulation is the
     private int id;
     private String regNo;
     private String name;
@@ -15,7 +16,7 @@ public class Student {
         this.regNo = regNo;
     }
 
-    public int getId() {
+    public int getId() {                                                                                             
         return id;
     }
 

@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "RestaurantManagementSys",
+      "request": "launch",
+      "mainClass": "com.systechafrica.restaurantmagementsystem.RestaurantManagementSys",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "Restaurant",
       "request": "launch",
       "mainClass": "com.systechafrica.restaurant.Restaurant",
