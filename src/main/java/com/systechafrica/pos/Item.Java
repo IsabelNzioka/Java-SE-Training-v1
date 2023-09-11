@@ -20,7 +20,7 @@ public class Item {
         updateTotalValue();
     }
 
-    // to be updated when using  the constructor or the getter&setter methods
+    // to be updated when using either the constructor or the getter&setter methods
     private void updateTotalValue() {
         this.totalValue = this.quantity * this.unitPrice;
     }

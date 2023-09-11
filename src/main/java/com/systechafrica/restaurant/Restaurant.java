@@ -49,6 +49,7 @@ public class Restaurant {
       }
       System.out.println("********************************************************");
       System.out.println("Total:  ----------------------------------------------" + totalOrderCost);
+      System.out.println("Total bill amount: " + totalOrderCost);
       System.out.println("Enter amount to pay: ");
       int amount = scanner.nextInt();
       if(amount > totalOrderCost) {
