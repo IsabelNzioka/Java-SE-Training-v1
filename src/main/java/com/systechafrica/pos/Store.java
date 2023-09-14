@@ -50,6 +50,7 @@ public class Store {
 
             // Add item to the items array
             Item s = new Item(itemCode, quantity, unitPrice);
+     
 
             // items[i] = s;
             items.add(s);  //keep track of all added items       

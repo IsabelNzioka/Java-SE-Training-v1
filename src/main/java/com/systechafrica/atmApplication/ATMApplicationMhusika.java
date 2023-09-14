@@ -15,10 +15,12 @@ public class ATMApplicationMhusika {
     public static void main(String[] args) {
         ATMApplicationMhusika app = new ATMApplicationMhusika();
         boolean loggedIn = app.login();
+
         if(loggedIn) {
             System.out.println("Logged in successfully");
             // ? show menu
             boolean keepShowingMenu = true;
+            
             while(keepShowingMenu){ // while(true)
                 app.displayMenu();
 
@@ -26,19 +28,7 @@ public class ATMApplicationMhusika {
                         System.out.println("Choose your option");
                 int option = app.scanner.nextInt();
                
-                // if(option == 1) {
-                //     app.checkBalance();
-                // }else if (option == 2) {
-                //     app.performDeposit();
-                // }else if(option == 3) {
-                //     app.performWithdrawal();
-                // } else if(option == 4) {
-                //     app.performTransfer();
-                // } else if (option == 5) {
-                //     keepShowingMenu = false;
-                // } else {
-                //     System.out.println("Invalid option... try again");
-                // }
+              
 
                   switch(option) {
                     case 1: 

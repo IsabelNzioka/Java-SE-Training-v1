@@ -1,13 +1,16 @@
 package com.systechafrica.part2.inheritance.companysetup;
 
 public class Employee {
-
     private String employeeNo;
     private String employeeName;
     private String employeeAddress;
 
-
-
+    public Employee(String employeeNo, String employeeName, String employeeAddress) {
+        this.employeeNo = employeeNo;
+        this.employeeName = employeeName;
+        this.employeeAddress = employeeAddress;
+    }
+    
     public String getEmployeeNo() {
         return employeeNo;
     }
@@ -26,5 +29,10 @@ public class Employee {
     public void setEmployeeAddress(String employeeAddress) {
         this.employeeAddress = employeeAddress;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Name: " + employeeName+" No: " + employeeNo+" Address: " +employeeAddress ;
+    }
+   
 }

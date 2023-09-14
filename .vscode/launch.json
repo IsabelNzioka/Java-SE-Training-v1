@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Pos",
+      "request": "launch",
+      "mainClass": "com.systechafrica.pointofsale.Pos",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "RestaurantManagementSys",
       "request": "launch",
       "mainClass": "com.systechafrica.restaurantmagementsystem.RestaurantManagementSys",
