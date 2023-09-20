@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "StaticDemo",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part2.staticClasses.StaticDemo",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "Math",
+      "request": "launch",
+      "mainClass": "com.systechafrica.maths.Math",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "Pos",
       "request": "launch",
       "mainClass": "com.systechafrica.pointofsale.Pos",

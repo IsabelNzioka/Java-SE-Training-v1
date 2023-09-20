@@ -30,4 +30,9 @@ public class Calculator {
         return a + b;
     }
 
+    public static void main(String[] args) {
+        Calculator app = new Calculator();
+        
+    }
+
 }
