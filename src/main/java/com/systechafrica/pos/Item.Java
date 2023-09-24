@@ -6,6 +6,17 @@ public class Item {
     private int quantity;
     private int unitPrice;
     private int totalValue;
+    // private boolean canSwim;
+
+    // public boolean isCanSwim() {
+    //     return canSwim;
+    // }
+
+
+    // public void setCanSwim(boolean canSwim) {
+    //     this.canSwim = canSwim;
+    // }
+
 
     public  Item() {
         

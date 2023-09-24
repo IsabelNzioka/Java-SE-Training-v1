@@ -1,11 +1,13 @@
 package com.systechafrica.part2.staticClasses;
 
 public class MathUtils {
+   
 
     // Method grouping
     public static class Calculator {
         // Method overloading
         public static int sum(int a, int b) {
+            
             return a + b;
 
         }
@@ -24,7 +26,7 @@ public class MathUtils {
 
    
 
-    public static  class Geometry  extends Calculator {
+    public   static  class Geometry  extends Calculator {
        public static final double calculateArea(double x, double y) {
         return x * y;
        }
@@ -32,6 +34,16 @@ public class MathUtils {
         return 2 * (x + y);
        }
 
+    }
+
+    public   static class Sub extends Geometry {
+        void hello() {
+            System.out.println("Hello");
+        }
+
+        // public static final double calculateArea(double x, double y) {   //? cannot override final methods
+        //     return x + y;
+        // }
     }
 
 

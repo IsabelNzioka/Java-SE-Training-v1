@@ -6,6 +6,34 @@
   "configurations": [
     {
       "type": "java",
+      "name": "JdbcDemo",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part2.jdbc.JdbcDemo",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "StringBuilders",
+      "request": "launch",
+      "mainClass": "com.systechafrica.extras.stringbuilder.StringBuilders",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "ExceptionHandlingDemo",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part3.exceptionhandling.ExceptionHandlingDemo",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "Extras",
+      "request": "launch",
+      "mainClass": "com.systechafrica.extras.Extras",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "StaticDemo",
       "request": "launch",
       "mainClass": "com.systechafrica.part2.staticClasses.StaticDemo",
