@@ -28,6 +28,8 @@ public class Store {
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
         System.out.println("3. DISPLAY RECEIPT");  
+
+        // TODO - QUIT MENU OPTION.
     }
 
     public void addItems() {
@@ -70,7 +72,8 @@ public class Store {
         System.out.println("Enter the amount given by customer");
         amountPaidByCustomer = scanner.nextInt();
         scanner.nextLine();
-
+        //  TODO - CHECK IF THERE IS AN ITEM BEFORE MAKING PAYMENT.
+        // TODO - INSUFFICIENT AMOUNT.
         if(amountPaidByCustomer > totalPayment) {
             change = amountPaidByCustomer - totalPayment;
         } 
