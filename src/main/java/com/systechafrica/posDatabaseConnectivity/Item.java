@@ -1,8 +1,8 @@
-package com.systechafrica.pos;
+package com.systechafrica.posDatabaseConnectivity;
 
 public class Item {
 
-    
+    private int id;
     private int itemCode;
     private int quantity;
     private int unitPrice;
@@ -11,7 +11,14 @@ public class Item {
     public  Item() {
         
     }
-   
+    public Item(int id, int itemCode, int quantity, int unitPrice) {
+        this.id = id;
+        this.itemCode = itemCode;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
+        // this.totalValue = quantity * unitPrice;
+        updateTotalValue();
+    }
 
     public Item(int itemCode, int quantity, int unitPrice) {
         this.itemCode = itemCode;
@@ -63,10 +70,12 @@ public class Item {
     }
 
 
+    @Override
+    public String toString() {
+        return "Task [id=" + id + ", itemCode=" + itemCode + ", quantity=" + quantity + ", unitPrice=" + unitPrice
+                + ", totalValue=" + totalValue + "]";
+    }
 
-    // @Override
-    // public String toString() {
-    //     return this.itemCode + "    " + this.quantity + "    " + this.unitPrice + "    " + this.totalValue;
-    // }
+
     
 }

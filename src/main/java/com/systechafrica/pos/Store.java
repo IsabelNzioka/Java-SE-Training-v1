@@ -8,11 +8,8 @@ import com.systechafrica.util.Login;
 
 public class Store {
     Scanner scanner = new Scanner(System.in);
-  
     public static int totalPayment;
     static int noOfItemsToPurchase = 0;
-
-    // static Item[] items = new Item[noOfItemsToPurchase];
     static ArrayList<Item> items = new ArrayList<>();
     static boolean isCustomerShopping = true;
     static boolean isPaymentMade = false;

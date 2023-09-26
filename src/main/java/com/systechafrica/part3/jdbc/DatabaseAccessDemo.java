@@ -16,9 +16,10 @@ import com.systechafrica.part3.logging.CustomFormatter;
 
 public class DatabaseAccessDemo {
     private static final Logger LOGGER = Logger.getLogger(DatabaseAccessDemo.class.getName());
+    private static Connection connection;
 
      public static void main(String[] args) {
-           Scanner scanner = new Scanner(System.in);
+            Scanner scanner = new Scanner(System.in);
             FileHandler fileHandler;
         try {
             fileHandler = new FileHandler("workingWithDatabase.txt", true);
@@ -31,17 +32,17 @@ public class DatabaseAccessDemo {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // create a connection to the database
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/workingwithdatabase", "root", "Nzioka15*");   
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/workingwithdatabase", "root", "Nzioka15*");   
 
 
             // Create a statement from the connection.
-        Statement statement =  connection.createStatement();
+            Statement statement =  connection.createStatement();
 
-        String createTasksTable = "CREATE TABLE IF NOT EXISTS tasks (task_id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255) NOT NULL,start_date DATE,due_date DATE,status TINYINT NOT NULL,priority TINYINT NOT NULL,description TEXT,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)  ENGINE=INNODB;";
+            String createTasksTable = "CREATE TABLE IF NOT EXISTS tasks (task_id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255) NOT NULL,start_date DATE,due_date DATE,status TINYINT NOT NULL,priority TINYINT NOT NULL,description TEXT,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)  ENGINE=INNODB;";
         
         // execute Queries
-       int updateStatus =  statement.executeUpdate(createTasksTable);
-       LOGGER.info("Update status= " + updateStatus);
+           int updateStatus =  statement.executeUpdate(createTasksTable);
+           LOGGER.info("Update status= " + updateStatus);
 
        // execute Insert statement
         // String insertQuery = "insert into tasks (title,start_date,due_date,status,priority,description)values('Add driver to the pom.xml','2023-09-22','2023-09-25',0,1,'updating drivers to the class path');";
@@ -58,12 +59,12 @@ public class DatabaseAccessDemo {
         preparedStatement.setInt(4, task.getTaskStatus());
         preparedStatement.setInt(5, task.getPriority());
         preparedStatement.setString(6, task.getDescription());
+        
         int noOfRows = preparedStatement.executeUpdate();
         LOGGER.info("Number of Rows=" + noOfRows);
 
         // Execute Selection
-
-            String selectQuery = "SELECT * from tasks;";
+           String selectQuery = "SELECT * from tasks;";
 
             ResultSet resultSet = statement.executeQuery(selectQuery);
             while (resultSet.next()) {

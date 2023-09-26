@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "Store",
+      "request": "launch",
+      "mainClass": "com.systechafrica.posDatabaseConnectivity.Store",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "DatabaseAccessDemo",
       "request": "launch",
       "mainClass": "com.systechafrica.part3.jdbc.DatabaseAccessDemo",
