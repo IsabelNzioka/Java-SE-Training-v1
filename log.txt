@@ -1,0 +1,12 @@
+2023-09-26 23:10:21 | main | INFO | Info message Logging
+2023-09-26 23:10:21 | main | SEVERE | Error message logging
+2023-09-26 23:10:21 | main | WARNING | Warning message Logging
+2023-09-26 23:10:21 | test | INFO | Info message Logging test
+2023-09-26 23:10:21 | test | SEVERE | Error message logging test
+2023-09-26 23:10:21 | test | WARNING | Warning message Logging test
+2023-09-26 23:10:35 | main | INFO | Info message Logging
+2023-09-26 23:10:35 | main | SEVERE | Error message logging
+2023-09-26 23:10:35 | main | WARNING | Warning message Logging
+2023-09-26 23:10:35 | test | INFO | Info message Logging test
+2023-09-26 23:10:35 | test | SEVERE | Error message logging test
+2023-09-26 23:10:35 | test | WARNING | Warning message Logging test

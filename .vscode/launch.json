@@ -6,6 +6,20 @@
   "configurations": [
     {
       "type": "java",
+      "name": "DatabaseAccessDemo",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part3.jdbc.DatabaseAccessDemo",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
+      "name": "FileLogging",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part3.logging.FileLogging",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "WorkingWithCollection",
       "request": "launch",
       "mainClass": "com.systechafrica.part3.collections.WorkingWithCollection",
