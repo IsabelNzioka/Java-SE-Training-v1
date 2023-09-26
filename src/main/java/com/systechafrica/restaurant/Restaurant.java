@@ -121,7 +121,7 @@ public class Restaurant {
   
         }
       }else {
-        System.out.println("Naximum attemps failed");
+        System.out.println("Maximum attemps failed");
     }
         
   

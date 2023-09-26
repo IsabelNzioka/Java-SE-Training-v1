@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "WorkingWithCollection",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part3.collections.WorkingWithCollection",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "JdbcDemo",
       "request": "launch",
       "mainClass": "com.systechafrica.part2.jdbc.JdbcDemo",
