@@ -12,12 +12,13 @@ import java.util.logging.Logger;
 import com.systechafrica.part3.logging.CustomFormatter;
 
 
-public class Store extends ConnectToDatabase {
+public class Store extends ConnectToDatabase implements MembershipDiscount {
+
     Scanner scanner = new Scanner(System.in);
     private static final Logger LOGGER = Logger.getLogger(Store.class.getName());
     private static FileHandler fileHandler;
     
-    public static int totalPayment;
+    public static double totalPayment;
 
     static boolean isCustomerShopping = true;
     static boolean isPaymentMade = false;
@@ -25,7 +26,7 @@ public class Store extends ConnectToDatabase {
     static int numberOfItemsPurchased = 0;
     
     public boolean isCartEmpty = true;
-    int change;
+    double change;
     int amountPaidByCustomer = 0;
 
     public Store(String createTableString) {
@@ -122,19 +123,25 @@ public class Store extends ConnectToDatabase {
             LOGGER.severe("Database connection failure " + e.getMessage());
         }
     }
+
+    public double calculateMembershipDiscount (double totalPayment) {
+        double discountAmount =  totalPayment * DISCOUNT;
+        double discountedAmount = totalPayment - discountAmount;
+         return discountedAmount;
+    }
     
 
     private void displayItemsFromDB() {
         try {
-          
-           // TODO - CHECK IF ITS EMPTY
+            double totalCartAmount = 0;
             String selectQuery = "SELECT * from items;";
             ResultSet resultSet = statement.executeQuery(selectQuery);
 
             System.out.println("_________________________________________________");
             System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
+
             while (resultSet.next()) { 
-                isCartEmpty = false;  //Item was  added
+                isCartEmpty = false;  //Item was  added 
 
                 int id = resultSet.getInt("item_id");
                 int itemCode = resultSet.getInt("itemCode");
@@ -146,11 +153,17 @@ public class Store extends ConnectToDatabase {
 
                
                 System.out.printf("%-10s %-12s %-9s %-10s%n", dbItem.getItemCode(),dbItem.getQuantity(), dbItem.getUnitPrice(), dbItem.getTotalValue());
-                totalPayment += dbItem.getTotalValue();
+                totalCartAmount += dbItem.getTotalValue();
+
+                if(AuthenticateUser.isUserAMember) {
+                   totalPayment =  calculateMembershipDiscount(totalCartAmount);
+                } else {
+                    totalPayment += totalCartAmount;
+                }
+                System.out.println("Total Cart Amount: -------------------------" + totalPayment);
+                
 
             }
-
-           
 
             resultSet.close();           
         } catch (SQLException e) {
@@ -160,10 +173,11 @@ public class Store extends ConnectToDatabase {
 
     public void payment() {
         boolean sufficientAmount = true;
+         displayItemsFromDB();
          if(isCartEmpty) {
                 System.out.println("No items in the Cart. Please Add Items then proceed to payment");
             } else {
-                 displayItemsFromDB();
+                
 
                 while (sufficientAmount) {
                     try {
@@ -188,11 +202,8 @@ public class Store extends ConnectToDatabase {
                         System.out.println(e.getMessage()); // Print the custom exception message
                         System.out.println("Please enter a sufficient amount.");
                     }
-        }
             }
-        
-
-    
+        }  
        
     }
     

@@ -13,7 +13,10 @@ import java.util.logging.Logger;
 import com.systechafrica.constants.Constants;
 
 public class AuthenticateUser extends ConnectToDatabase  {
+
     private static final Logger LOGGER = Logger.getLogger(AuthenticateUser.class.getName());
+    public static boolean isUserAMember = false;
+
     Scanner scanner = new Scanner(System.in);
 
     public AuthenticateUser (String createTableString) {
@@ -39,6 +42,8 @@ public class AuthenticateUser extends ConnectToDatabase  {
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getPassword());
             preparedStatement.executeUpdate();
+
+            isUserAMember = true;
 
             preparedStatement.close();
 
@@ -85,6 +90,7 @@ public class AuthenticateUser extends ConnectToDatabase  {
                 }
     
                 if (userExists) {
+                    isUserAMember = true;
                     break;
                 } else {
                     System.out.println("Wrong credentials. Please try again.");
