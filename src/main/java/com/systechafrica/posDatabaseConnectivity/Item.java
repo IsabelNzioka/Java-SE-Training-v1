@@ -7,8 +7,6 @@ public class Item {
     private int quantity;
     private int unitPrice;
     private int totalValue;
-
-    // TODO - ADD ITEM NAME.
   
     public  Item() {
         
@@ -19,15 +17,12 @@ public class Item {
         this.quantity = quantity;
         this.unitPrice = unitPrice;
         this.totalValue = totalValue;
-        // this.totalValue = quantity * unitPrice;
-        // updateTotalValue();
     }
 
     public Item(int itemCode, int quantity, int unitPrice) {
         this.itemCode = itemCode;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
-        // this.totalValue = quantity * unitPrice;
         updateTotalValue();
     }
 

@@ -1,23 +1,15 @@
 package com.systechafrica.posDatabaseConnectivity;
 
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 
 
 import com.systechafrica.part3.logging.CustomFormatter;
-
-
 
 
 public class Store extends ConnectToDatabase {
@@ -27,12 +19,11 @@ public class Store extends ConnectToDatabase {
     
     public static int totalPayment;
 
-    // static int noOfItemsToPurchase = 0;
     static boolean isCustomerShopping = true;
     static boolean isPaymentMade = false;
-    static int numberOfItemsPurchased = 0;
     static boolean keepShowingMenu = true;
-
+    static int numberOfItemsPurchased = 0;
+    
     int change;
     int amountPaidByCustomer = 0;
 
@@ -40,25 +31,15 @@ public class Store extends ConnectToDatabase {
         super(createTableString);  
     }
 
-
-  
-    
-
     public static void fileHandler() {
         try {
-        //    fileHandler = new FileHandler("pos.txt", true);
-        //     CustomFormatter formatter = new CustomFormatter();
-        //     LOGGER.addHandler(fileHandler);
-        //     fileHandler.setFormatter(formatter);
-        
              // Check if the FileHandler is already created
              if (fileHandler == null) {
                 fileHandler = new FileHandler("pos.txt", true);
                 CustomFormatter formatter = new CustomFormatter();
                 LOGGER.addHandler(fileHandler);
                 fileHandler.setFormatter(formatter);
-            }
-            
+            }     
         }catch (SecurityException e) {
             LOGGER.severe("Unable to obtain security permissions for the Log file" + e.getMessage());
         }
@@ -79,61 +60,69 @@ public class Store extends ConnectToDatabase {
         System.out.println("4. Quit"); 
     }
 
-    private void addItemsToDB() {
+    private void addItemsToDB(){
         try {
-            String insertQuery = "Insert into itemsggg (itemCode, quantity, unitPrice, totalValue)values(?,?,?,?);";
+            String insertQuery = "Insert into items (itemCode, quantity, unitPrice, totalValue) values (?, ?, ?, ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-
+    
             System.out.print("Enter the number of items to purchase: ");
             int noOfItemsToPurchase = scanner.nextInt();
-             scanner.nextLine();
-
-       // Read task details
-        for (int i = 1; i <= noOfItemsToPurchase; i++) {
-            numberOfItemsPurchased += 1;
-
-            System.out.print("Enter the Item Code for item " + numberOfItemsPurchased + ": ");
-            int itemCode = scanner.nextInt();
-
-            System.out.print("Enter the quantity for item " + numberOfItemsPurchased + ": ");
-            int quantity = scanner.nextInt();
+            scanner.nextLine();
     
-            System.out.print("Enter the unit price for item " + numberOfItemsPurchased + ": ");
-            int unitPrice = scanner.nextInt();
-            scanner.nextLine(); 
-
-            totalPayment += (quantity * unitPrice); 
-            // TODO - CHECK FOR NEGATIVE INPUT
-
-            Item item = new Item(itemCode, quantity, unitPrice);
-
-            preparedStatement.setInt(1, item.getItemCode());
-            preparedStatement.setInt(2, item.getQuantity());
-            preparedStatement.setInt(3, item.getUnitPrice());
-            preparedStatement.setInt(4, item.getTotalValue());
-         
-            preparedStatement.executeUpdate();
-              
-        }
-        preparedStatement.close();
-
-
-        System.out.println("Would you like to add more items?: Y/N");
-        String continueShopping = scanner.next();
+            // Read task details
+            for (int i = 1; i <= noOfItemsToPurchase; i++) {
+                numberOfItemsPurchased += 1;
+                boolean noNegativeValues = true;
     
-        if(continueShopping.equalsIgnoreCase("N")) {
+                while (noNegativeValues) {
+                    System.out.print("Enter the Item Code for item " + numberOfItemsPurchased + ": ");
+                    int itemCode = scanner.nextInt();
+    
+                    System.out.print("Enter the quantity for item " + numberOfItemsPurchased + ": ");
+                    int quantity = scanner.nextInt();
+    
+                    System.out.print("Enter the unit price for item " + numberOfItemsPurchased + ": ");
+                    int unitPrice = scanner.nextInt();
+                    scanner.nextLine();
+    
+                    if (itemCode > 0 && quantity > 0 && unitPrice > 0) {
+                        totalPayment += (quantity * unitPrice);
+    
+                        Item item = new Item(itemCode, quantity, unitPrice);
+    
+                        preparedStatement.setInt(1, item.getItemCode());
+                        preparedStatement.setInt(2, item.getQuantity());
+                        preparedStatement.setInt(3, item.getUnitPrice());
+                        preparedStatement.setInt(4, item.getTotalValue());
+    
+                        preparedStatement.executeUpdate();
+                        break;
+                    } else {
+                        
+                        LOGGER.severe("Input should not be negative! Please enter valid values.\n");  
+                        noOfItemsToPurchase += 1;
+                        numberOfItemsPurchased -= 1;
+                        noNegativeValues = false;
+                    }
+                }
+            }
+            preparedStatement.close();
+    
+            System.out.println("Would you like to add more items?: Y/N");
+            String continueShopping = scanner.next();
+    
+            if (continueShopping.equalsIgnoreCase("N")) {
                 // end shopping - display menu
                 // System.out.println(totalPayment);
-                 isCustomerShopping=false;
-                                }
-
+                isCustomerShopping = false;
+            }
         } catch (SQLException e) {
             isCustomerShopping = false;
             keepShowingMenu = false;
-            LOGGER.severe("Database connection failure" + e.getMessage()); 
+            LOGGER.severe("Database connection failure " + e.getMessage());
         }
     }
-
+    
 
     private void displayItemsFromDB() {
         try {

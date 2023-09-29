@@ -53,6 +53,7 @@ public class AuthenticateUser extends ConnectToDatabase  {
        
         List<User> users = new ArrayList<>();
         boolean loggedIn = false;
+        boolean userExists = false;
         int oginEnteries = 0;
     
         try {
@@ -67,7 +68,6 @@ public class AuthenticateUser extends ConnectToDatabase  {
             }
     
             while (oginEnteries < 3) { 
-                boolean userExists = false;
 
                 System.out.println("Enter your userName - Admin");
                 String enteredUserName = scanner.nextLine();

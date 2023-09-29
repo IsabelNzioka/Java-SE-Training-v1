@@ -33,9 +33,9 @@ public class ConnectToDatabase {
 
             
         }  catch (ClassNotFoundException e) {
-            LOGGER.severe("Unable to obtain class for jdbc driver: " + e.getMessage());
+            LOGGER.severe("Unable to obtain class for jdbc driver: " + e.getMessage() );
         } catch (SQLException e) {
-            LOGGER.severe("Database operation failure: " + e.getMessage());
+            LOGGER.severe("Database operation failure: " + e.getMessage()  );
         }
      }
     

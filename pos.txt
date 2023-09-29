@@ -1,1 +1,1 @@
-2023-09-29 21:04:58 | main | SEVERE | Oops an error occurred: null2023-09-29 21:06:38 | addItemsToDB | SEVERE | Database connection failureTable 'posdatabase.itemsggg' doesn't exist
+2023-09-29 22:56:20 | main | SEVERE | Oops an error occurred: null
