@@ -233,7 +233,15 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
     public void quit(){
         // confirm if they want to quit - cart should be cleared 
         // then quit
-          
+            System.out.println("Are You Sure You want to quit? - Selected Items will be deleted - Y/N");
+            String quitNow = scanner.next();
+
+            if(quitNow.equalsIgnoreCase("Y")) {
+                clearItemsFromDB();
+                keepShowingMenu = false;
+            }else {
+                keepShowingMenu = true;
+            }
                  
     }
 
