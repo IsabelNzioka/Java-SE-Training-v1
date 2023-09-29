@@ -49,7 +49,6 @@ public class Store extends ConnectToDatabase {
 
     }
   
-
      public void displayMenu() {
         System.out.println("-----------------------------------");
         System.out.println("-----     SYSTEM POS SYSTEM    ----");
@@ -69,11 +68,11 @@ public class Store extends ConnectToDatabase {
             int noOfItemsToPurchase = scanner.nextInt();
             scanner.nextLine();
     
-            // Read task details
+            // Add Multiple Items
             for (int i = 1; i <= noOfItemsToPurchase; i++) {
                 numberOfItemsPurchased += 1;
                 boolean noNegativeValues = true;
-    
+                
                 while (noNegativeValues) {
                     System.out.print("Enter the Item Code for item " + numberOfItemsPurchased + ": ");
                     int itemCode = scanner.nextInt();
@@ -85,6 +84,7 @@ public class Store extends ConnectToDatabase {
                     int unitPrice = scanner.nextInt();
                     scanner.nextLine();
     
+                    // Check for Negative values before Items are added to the database
                     if (itemCode > 0 && quantity > 0 && unitPrice > 0) {
                         totalPayment += (quantity * unitPrice);
     
@@ -100,8 +100,8 @@ public class Store extends ConnectToDatabase {
                     } else {
                         
                         LOGGER.severe("Input should not be negative! Please enter valid values.\n");  
-                        noOfItemsToPurchase += 1;
-                        numberOfItemsPurchased -= 1;
+                        noOfItemsToPurchase += 1;  //allow user to enter the item again using positive values
+                        numberOfItemsPurchased -= 1; //allow user to enter the item again using positive values
                         noNegativeValues = false;
                     }
                 }
@@ -113,7 +113,6 @@ public class Store extends ConnectToDatabase {
     
             if (continueShopping.equalsIgnoreCase("N")) {
                 // end shopping - display menu
-                // System.out.println(totalPayment);
                 isCustomerShopping = false;
             }
         } catch (SQLException e) {
@@ -157,23 +156,36 @@ public class Store extends ConnectToDatabase {
     }
 
     public void payment() {
+        boolean sufficientAmount = true;
         displayItemsFromDB();
 
-        System.out.println("Enter the amount given by customer");
-        amountPaidByCustomer = scanner.nextInt();
-        scanner.nextLine();
-        // TODO - INSUFFICIENT AMOUNT.
-        if(amountPaidByCustomer > totalPayment) {
-            change = amountPaidByCustomer - totalPayment;
-        } 
-        System.out.println("Change: ---------------------------------------- " + change);
-        System.out.println("***************************************************");
-        System.out.println("THANK YOU FOR SHOPPING WITH US - PRINT RECEIPT");
-        System.out.println("***************************************************");
+    
+        while (sufficientAmount) {
+            try {
+                System.out.println("Enter the amount given by customer");
+                amountPaidByCustomer = scanner.nextInt();
+                scanner.nextLine();
+    
+                if (amountPaidByCustomer < totalPayment) {
+                    throw new CustomException("Insufficient Amount");
+                }
+                change = amountPaidByCustomer - totalPayment;
+    
+                System.out.println("Change: ---------------------------------------- " + change);
+                System.out.println("***************************************************");
+                System.out.println("THANK YOU FOR SHOPPING WITH US - PRINT RECEIPT");
+                System.out.println("***************************************************");
+    
+                isPaymentMade = true;
+                break;
+            } catch (CustomException e) {
 
-        isPaymentMade = true;    
+                System.out.println(e.getMessage()); // Print the custom exception message
+                System.out.println("Please enter a sufficient amount.");
+            }
+        }
     }
-
+    
     public void displayReceipt() {
         displayItemsFromDB();
         System.out.println("Amount paid: ---------------------------------- " + amountPaidByCustomer);
@@ -197,7 +209,6 @@ public class Store extends ConnectToDatabase {
         fileHandler();
         
          try {
-            // database
               connectToDatabase();
             //   auth.signupCustomer();
     
