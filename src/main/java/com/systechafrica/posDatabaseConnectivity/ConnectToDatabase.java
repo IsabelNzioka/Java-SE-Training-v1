@@ -26,7 +26,7 @@ public class ConnectToDatabase {
             String dbUser = dotenv.get("DB_USER");
             String dbPassword = dotenv.get("DB_PASSWORD");
             String dbUrl = dotenv.get("DB_URL");
-           ;
+            
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);   
 
             // itemCode,quantity,unitPrice;

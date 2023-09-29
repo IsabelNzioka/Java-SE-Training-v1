@@ -25,7 +25,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
     static boolean keepShowingMenu = true;
     static int numberOfItemsPurchased = 0;
     
-    public boolean isCartEmpty = true;
+    public static boolean isCartEmpty = true;
     double change;
     int amountPaidByCustomer = 0;
 
@@ -226,9 +226,15 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
             
         } catch (SQLException e) {
             LOGGER.severe("Database connection failure " + e.getMessage());
-        }
-       
+        }   
 
+    }
+
+    public void quit(){
+        // confirm if they want to quit - cart should be cleared 
+        // then quit
+          
+                 
     }
 
      public static void main(String[] args) {
@@ -279,8 +285,8 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                             }
                               
                         } else if(option == 4) {
-                            // TODO - CHECK IF PAYMADE IS MADE, BUT THE RECEIPT WAS NOT PRINTED BEFORE QUITING.
-                            keepShowingMenu = false;
+                            app.quit();
+                            
                         }
                         
                         else {
