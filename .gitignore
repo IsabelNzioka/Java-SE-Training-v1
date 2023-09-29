@@ -46,6 +46,11 @@ wildfly-server
 *.tar.gz
 *.rar
 
+pos.txt.1
+pos.txt.1.lck
+pos.txt.2
+pos.txt.2.lck
+
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 
