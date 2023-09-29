@@ -20,7 +20,7 @@ public class ConnectToDatabase {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             // TODO - .ENV TO HIDE CONFIDENTIAL DETAILS
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/posdatabase", "root", "Nzioka156*");   
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/posdatabase", "root", "Nzioka15*");   
 
             // itemCode,quantity,unitPrice;
             statement =  connection.createStatement();

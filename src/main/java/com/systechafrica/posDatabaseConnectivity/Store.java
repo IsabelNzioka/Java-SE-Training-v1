@@ -24,6 +24,7 @@ public class Store extends ConnectToDatabase {
     static boolean keepShowingMenu = true;
     static int numberOfItemsPurchased = 0;
     
+    public boolean isCartEmpty = true;
     int change;
     int amountPaidByCustomer = 0;
 
@@ -125,6 +126,7 @@ public class Store extends ConnectToDatabase {
 
     private void displayItemsFromDB() {
         try {
+          
            // TODO - CHECK IF ITS EMPTY
             String selectQuery = "SELECT * from items;";
             ResultSet resultSet = statement.executeQuery(selectQuery);
@@ -132,7 +134,8 @@ public class Store extends ConnectToDatabase {
             System.out.println("_________________________________________________");
             System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
             while (resultSet.next()) { 
-                // ItemCode   Quantity   UnitPrice   TotalPrice
+                isCartEmpty = false;  //Item was  added
+
                 int id = resultSet.getInt("item_id");
                 int itemCode = resultSet.getInt("itemCode");
                 int quantity = resultSet.getInt("quantity");
@@ -146,8 +149,8 @@ public class Store extends ConnectToDatabase {
                 totalPayment += dbItem.getTotalValue();
 
             }
-            System.out.println("___________________________________________________");
-            System.out.println("TOTAL: ---------------------------------------- " + totalPayment);
+
+           
 
             resultSet.close();           
         } catch (SQLException e) {
@@ -157,33 +160,40 @@ public class Store extends ConnectToDatabase {
 
     public void payment() {
         boolean sufficientAmount = true;
-        displayItemsFromDB();
+         if(isCartEmpty) {
+                System.out.println("No items in the Cart. Please Add Items then proceed to payment");
+            } else {
+                 displayItemsFromDB();
 
-    
-        while (sufficientAmount) {
-            try {
-                System.out.println("Enter the amount given by customer");
-                amountPaidByCustomer = scanner.nextInt();
-                scanner.nextLine();
-    
-                if (amountPaidByCustomer < totalPayment) {
-                    throw new CustomException("Insufficient Amount");
-                }
-                change = amountPaidByCustomer - totalPayment;
-    
-                System.out.println("Change: ---------------------------------------- " + change);
-                System.out.println("***************************************************");
-                System.out.println("THANK YOU FOR SHOPPING WITH US - PRINT RECEIPT");
-                System.out.println("***************************************************");
-    
-                isPaymentMade = true;
-                break;
-            } catch (CustomException e) {
+                while (sufficientAmount) {
+                    try {
+                        System.out.println("Enter the amount given by customer");
+                        amountPaidByCustomer = scanner.nextInt();
+                        scanner.nextLine();
+            
+                        if (amountPaidByCustomer < totalPayment) {
+                            throw new CustomException("Insufficient Amount");
+                        }
+                        change = amountPaidByCustomer - totalPayment;
+            
+                        System.out.println("Change: ---------------------------------------- " + change);
+                        System.out.println("***************************************************");
+                        System.out.println("THANK YOU FOR SHOPPING WITH US - PRINT RECEIPT");
+                        System.out.println("***************************************************");
+            
+                        isPaymentMade = true;
+                        break;
+                    } catch (CustomException e) {
 
-                System.out.println(e.getMessage()); // Print the custom exception message
-                System.out.println("Please enter a sufficient amount.");
-            }
+                        System.out.println(e.getMessage()); // Print the custom exception message
+                        System.out.println("Please enter a sufficient amount.");
+                    }
         }
+            }
+        
+
+    
+       
     }
     
     public void displayReceipt() {
@@ -198,6 +208,14 @@ public class Store extends ConnectToDatabase {
 
      public void clearItemsFromDB() {
         // delete after printing receipt.
+        try {
+            String deleteQuery = "DELETE FROM items";
+            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
+            preparedStatement.executeUpdate();
+            
+        } catch (SQLException e) {
+            LOGGER.severe("Database connection failure " + e.getMessage());
+        }
        
 
     }
@@ -243,6 +261,7 @@ public class Store extends ConnectToDatabase {
                             if(isPaymentMade) {
                                // display receipt then quit
                                 app.displayReceipt();
+                                app.clearItemsFromDB(); // cart is cleared
                                 keepShowingMenu = false;
                             } else {
                                 System.out.println("Please make the payment first before printing the receipt");
