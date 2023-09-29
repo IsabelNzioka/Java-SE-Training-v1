@@ -28,16 +28,11 @@ public class ConnectToDatabase {
             String dbUrl = dotenv.get("DB_URL");
             
             connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);   
-
-            // itemCode,quantity,unitPrice;
             statement =  connection.createStatement();
             String createTasksTable = createTableString;
     
             int updateStatus =  statement.executeUpdate(createTasksTable);
             LOGGER.info("Update status= " + updateStatus);
-
-
-
             
         }  catch (ClassNotFoundException e) {
             LOGGER.severe("Unable to obtain class for jdbc driver: " + e.getMessage() );

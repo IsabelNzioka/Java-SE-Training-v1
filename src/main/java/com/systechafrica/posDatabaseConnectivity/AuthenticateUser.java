@@ -31,13 +31,10 @@ public class AuthenticateUser extends ConnectToDatabase  {
             System.out.print("Enter your name: ");
             String userName = scanner.nextLine();
            
-        
             System.out.print("Enter your password: ");
             String password = scanner.nextLine();
     
-           
-            // TODO - Check if user EXists - 
-
+            // TODO - Check if user EXists 
             User user = new User(userName, password);
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getPassword());
@@ -46,20 +43,17 @@ public class AuthenticateUser extends ConnectToDatabase  {
             isUserAMember = true;
 
             preparedStatement.close();
-
         } catch (SQLException e) {
             LOGGER.severe("Database connection failure" + e.getMessage()); 
         }
-
     }
 
 
     public boolean loginCustomer() {
-       
         List<User> users = new ArrayList<>();
         boolean loggedIn = false;
         boolean userExists = false;
-        int oginEnteries = 0;
+        int loginEnteries = 0;
     
         try {
             String selectQuery = "SELECT * from users;";
@@ -72,7 +66,7 @@ public class AuthenticateUser extends ConnectToDatabase  {
                 users.add(new User(id, userName, password));
             }
     
-            while (oginEnteries < 3) { 
+            while (loginEnteries < 3) { 
 
                 System.out.println("Enter your userName - Admin");
                 String enteredUserName = scanner.nextLine();
@@ -90,13 +84,13 @@ public class AuthenticateUser extends ConnectToDatabase  {
                 }
     
                 if (userExists) {
-                    isUserAMember = true;
+                    isUserAMember = true;  //Used for calculating discounts for members only
                     break;
                 } else {
                     System.out.println("Wrong credentials. Please try again.");
                 }
     
-                oginEnteries++; 
+                loginEnteries++; 
             }
     
             return loggedIn;

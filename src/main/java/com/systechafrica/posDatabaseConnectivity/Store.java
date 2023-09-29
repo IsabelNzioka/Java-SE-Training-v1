@@ -61,7 +61,24 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
         System.out.println("4. Quit"); 
     }
 
-    private void addItemsToDB(){
+    private void addItemToDatabase(int itemCode, int quantity, int unitPrice) throws SQLException {
+        String insertQuery = "INSERT INTO items (itemCode, quantity, unitPrice, totalValue) VALUES (?, ?, ?, ?);";
+        PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+    
+        totalPayment += (quantity * unitPrice);
+    
+        Item item = new Item(itemCode, quantity, unitPrice);
+    
+        preparedStatement.setInt(1, item.getItemCode());
+        preparedStatement.setInt(2, item.getQuantity());
+        preparedStatement.setInt(3, item.getUnitPrice());
+        preparedStatement.setInt(4, item.getTotalValue());
+    
+        preparedStatement.executeUpdate();
+        preparedStatement.close();
+    }    
+
+    private void addItems(){
         try {
             String insertQuery = "Insert into items (itemCode, quantity, unitPrice, totalValue) values (?, ?, ?, ?);";
             PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
@@ -73,38 +90,29 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
             // Add Multiple Items
             for (int i = 1; i <= noOfItemsToPurchase; i++) {
                 numberOfItemsPurchased += 1;
-                boolean noNegativeValues = true;
+                boolean hasNoNegativeValues = true;
                 
-                while (noNegativeValues) {
+                while (hasNoNegativeValues) {
                     System.out.print("Enter the Item Code for item " + numberOfItemsPurchased + ": ");
                     int itemCode = scanner.nextInt();
-    
+
                     System.out.print("Enter the quantity for item " + numberOfItemsPurchased + ": ");
                     int quantity = scanner.nextInt();
-    
+
                     System.out.print("Enter the unit price for item " + numberOfItemsPurchased + ": ");
                     int unitPrice = scanner.nextInt();
                     scanner.nextLine();
-    
+     
                     // Check for Negative values before Items are added to the database
                     if (itemCode > 0 && quantity > 0 && unitPrice > 0) {
-                        totalPayment += (quantity * unitPrice);
-    
-                        Item item = new Item(itemCode, quantity, unitPrice);
-    
-                        preparedStatement.setInt(1, item.getItemCode());
-                        preparedStatement.setInt(2, item.getQuantity());
-                        preparedStatement.setInt(3, item.getUnitPrice());
-                        preparedStatement.setInt(4, item.getTotalValue());
-    
-                        preparedStatement.executeUpdate();
+                         addItemToDatabase(itemCode, quantity, unitPrice);
                         break;
                     } else {
                         
                         LOGGER.severe("Input should not be negative! Please enter valid values.\n");  
                         noOfItemsToPurchase += 1;  //allow user to enter the item again using positive values
                         numberOfItemsPurchased -= 1; //allow user to enter the item again using positive values
-                        noNegativeValues = false;
+                        hasNoNegativeValues = false;
                     }
                 }
             }
@@ -177,8 +185,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
          if(isCartEmpty) {
                 System.out.println("No items in the Cart. Please Add Items then proceed to payment");
             } else {
-                
-
+            
                 while (sufficientAmount) {
                     try {
                         System.out.println("Enter the amount given by customer");
@@ -218,7 +225,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
 
 
      public void clearItemsFromDB() {
-        // delete after printing receipt.
+        // delete items after printing receipt.
         try {
             String deleteQuery = "DELETE FROM items";
             PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
@@ -232,7 +239,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
 
     public void quit(){
         // confirm if they want to quit - cart should be cleared 
-        // then quit
             System.out.println("Are You Sure You want to quit? - Selected Items will be deleted - Y/N");
             String quitNow = scanner.next();
 
@@ -241,8 +247,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                 keepShowingMenu = false;
             }else {
                 keepShowingMenu = true;
-            }
-                 
+            }               
     }
 
      public static void main(String[] args) {
@@ -256,14 +261,11 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
             //   auth.signupCustomer();
     
             boolean isLoggedIn = auth.loginCustomer();
-            // boolean keepShowingMenu = true;
 
             if (isLoggedIn) {
                 System.out.println("Happy Shopping Customer :) ");
     
                 while (keepShowingMenu) {
-                    // Y -continue shopping
-                    // N - showMenu 
                     app.displayMenu();
                 
                     try {
@@ -273,9 +275,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
     
                         if (option == 1 ) {
                             while(isCustomerShopping) {
-                                app.addItemsToDB();
-    
-                               
+                                app.addItems();    
                             }
                             System.out.println("Thank you for shopping with us - Proceed to payment/receipt printing.");
               
@@ -311,7 +311,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
             }
 
 
-             app.scanner.close();
+              app.scanner.close();
               statement.close();
               connection.close();
             
