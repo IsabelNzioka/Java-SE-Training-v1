@@ -7,17 +7,20 @@ public class Item {
     private int quantity;
     private int unitPrice;
     private int totalValue;
+
+    // TODO - ADD ITEM NAME.
   
     public  Item() {
         
     }
-    public Item(int id, int itemCode, int quantity, int unitPrice) {
+    public Item(int id, int itemCode, int quantity, int unitPrice, int totalValue) {
         this.id = id;
         this.itemCode = itemCode;
         this.quantity = quantity;
         this.unitPrice = unitPrice;
+        this.totalValue = totalValue;
         // this.totalValue = quantity * unitPrice;
-        updateTotalValue();
+        // updateTotalValue();
     }
 
     public Item(int itemCode, int quantity, int unitPrice) {

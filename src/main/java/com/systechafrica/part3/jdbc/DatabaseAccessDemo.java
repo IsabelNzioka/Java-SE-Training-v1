@@ -59,15 +59,15 @@ public class DatabaseAccessDemo {
         preparedStatement.setInt(4, task.getTaskStatus());
         preparedStatement.setInt(5, task.getPriority());
         preparedStatement.setString(6, task.getDescription());
-        
+
         int noOfRows = preparedStatement.executeUpdate();
         LOGGER.info("Number of Rows=" + noOfRows);
 
         // Execute Selection
            String selectQuery = "SELECT * from tasks;";
-
             ResultSet resultSet = statement.executeQuery(selectQuery);
             while (resultSet.next()) {
+                
                 // task_id,title,start_date,due_date,status,priority,description
                 int id = resultSet.getInt("task_id");
                 String title = resultSet.getString("title");
@@ -99,8 +99,7 @@ public class DatabaseAccessDemo {
         }
          catch (ClassNotFoundException e) {
             LOGGER.severe("Unable to obtain class for jdbc driver" + e.getMessage());
-        } catch (SQLException e) {
-            
+        } catch (SQLException e) {  
             LOGGER.severe("Database connection failure" + e.getMessage());
         } catch (Exception e) {
             LOGGER.severe("Oops an error occurred: " + e.getMessage());
