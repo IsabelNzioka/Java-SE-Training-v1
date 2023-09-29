@@ -6,7 +6,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Logger;
 
+import io.github.cdimascio.dotenv.Dotenv;
+
 public class ConnectToDatabase {
+       public static Dotenv dotenv = Dotenv.configure().load();
         private static final Logger LOGGER = Logger.getLogger(ConnectToDatabase.class.getName());
         public static Connection connection;
         public static Statement statement;
@@ -19,8 +22,12 @@ public class ConnectToDatabase {
         public static  void connectToDatabase() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            // TODO - .ENV TO HIDE CONFIDENTIAL DETAILS
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/posdatabase", "root", "Nzioka15d*");   
+            
+            String dbUser = dotenv.get("DB_USER");
+            String dbPassword = dotenv.get("DB_PASSWORD");
+            String dbUrl = dotenv.get("DB_URL");
+           ;
+            connection = DriverManager.getConnection(dbUrl, dbUser, dbPassword);   
 
             // itemCode,quantity,unitPrice;
             statement =  connection.createStatement();
