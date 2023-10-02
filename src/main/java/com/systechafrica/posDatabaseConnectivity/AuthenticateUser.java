@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
-import com.systechafrica.constants.Constants;
+
 
 public class AuthenticateUser extends ConnectToDatabase  {
 
@@ -34,7 +34,7 @@ public class AuthenticateUser extends ConnectToDatabase  {
             System.out.print("Enter your password: ");
             String password = scanner.nextLine();
     
-            // TODO - Check if user EXists 
+            // TODO - Check if user EXists -
             User user = new User(userName, password);
             preparedStatement.setString(1, user.getUserName());
             preparedStatement.setString(2, user.getPassword());

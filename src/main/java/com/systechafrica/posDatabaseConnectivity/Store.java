@@ -80,9 +80,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
 
     private void addItems(){
         try {
-            String insertQuery = "Insert into items (itemCode, quantity, unitPrice, totalValue) values (?, ?, ?, ?);";
-            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-    
             System.out.print("Enter the number of items to purchase: ");
             int noOfItemsToPurchase = scanner.nextInt();
             scanner.nextLine();
@@ -116,8 +113,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                     }
                 }
             }
-            preparedStatement.close();
-    
             System.out.println("Would you like to add more items?: Y/N");
             String continueShopping = scanner.next();
     
@@ -163,6 +158,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                 System.out.printf("%-10s %-12s %-9s %-10s%n", dbItem.getItemCode(),dbItem.getQuantity(), dbItem.getUnitPrice(), dbItem.getTotalValue());
                 totalCartAmount += dbItem.getTotalValue();
 
+                // discount is for members only
                 if(AuthenticateUser.isUserAMember) {
                    totalPayment =  calculateMembershipDiscount(totalCartAmount);
                 } else {
