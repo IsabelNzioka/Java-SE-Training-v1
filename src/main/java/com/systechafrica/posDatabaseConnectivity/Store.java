@@ -1,7 +1,7 @@
 package com.systechafrica.posDatabaseConnectivity;
 
 import java.io.IOException;
-import java.sql.PreparedStatement;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Scanner;
@@ -35,7 +35,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
 
     public static void fileHandler() {
         try {
-             // Check if the FileHandler is already created
              if (fileHandler == null) {
                 fileHandler = new FileHandler("pos.txt", true);
                 CustomFormatter formatter = new CustomFormatter();
@@ -61,23 +60,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
         System.out.println("4. Quit"); 
     }
 
-    private void addItemToDatabase(int itemCode, int quantity, int unitPrice) throws SQLException {
-        String insertQuery = "INSERT INTO items (itemCode, quantity, unitPrice, totalValue) VALUES (?, ?, ?, ?);";
-        PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
-    
-        totalPayment += (quantity * unitPrice);
-    
-        Item item = new Item(itemCode, quantity, unitPrice);
-    
-        preparedStatement.setInt(1, item.getItemCode());
-        preparedStatement.setInt(2, item.getQuantity());
-        preparedStatement.setInt(3, item.getUnitPrice());
-        preparedStatement.setInt(4, item.getTotalValue());
-    
-        preparedStatement.executeUpdate();
-        preparedStatement.close();
-    }    
-
     private void addItems(){
         try {
             System.out.print("Enter the number of items to purchase: ");
@@ -99,13 +81,11 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                     System.out.print("Enter the unit price for item " + numberOfItemsPurchased + ": ");
                     int unitPrice = scanner.nextInt();
                     scanner.nextLine();
-     
                     // Check for Negative values before Items are added to the database
                     if (itemCode > 0 && quantity > 0 && unitPrice > 0) {
-                         addItemToDatabase(itemCode, quantity, unitPrice);
+                        addItemToDatabase(itemCode, quantity, unitPrice);
                         break;
-                    } else {
-                        
+                    } else { 
                         LOGGER.severe("Input should not be negative! Please enter valid values.\n");  
                         noOfItemsToPurchase += 1;  //allow user to enter the item again using positive values
                         numberOfItemsPurchased -= 1; //allow user to enter the item again using positive values
@@ -154,7 +134,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
 
                 Item dbItem = new Item(id, itemCode, quantity, unitPrice, totalValue);
 
-               
                 System.out.printf("%-10s %-12s %-9s %-10s%n", dbItem.getItemCode(),dbItem.getQuantity(), dbItem.getUnitPrice(), dbItem.getTotalValue());
                 totalCartAmount += dbItem.getTotalValue();
 
@@ -164,9 +143,6 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                 } else {
                     totalPayment += totalCartAmount;
                 }
-                System.out.println("Total Cart Amount: -------------------------" + totalPayment);
-                
-
             }
 
             resultSet.close();           
@@ -180,10 +156,13 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
          displayItemsFromDB();
          if(isCartEmpty) {
                 System.out.println("No items in the Cart. Please Add Items then proceed to payment");
-            } else {
-            
-                while (sufficientAmount) {
+            }else if(isPaymentMade) {
+               System.out.println("Payment has been made. Please proceed to print the receipt"); 
+            }
+             else {
+              while (sufficientAmount) {
                     try {
+                        System.out.println("Total Cart Amount: -------------------------" + totalPayment);
                         System.out.println("Enter the amount given by customer");
                         amountPaidByCustomer = scanner.nextInt();
                         scanner.nextLine();
@@ -206,32 +185,18 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                         System.out.println("Please enter a sufficient amount.");
                     }
             }
-        }  
-       
+        }      
     }
     
     public void displayReceipt() {
         displayItemsFromDB();
+        System.out.println("Total Cart Amount: -------------------------" + totalPayment);
         System.out.println("Amount paid: ---------------------------------- " + amountPaidByCustomer);
         System.out.println("Change: --------------------------------------- " + change);
         System.out.println("***************************************************");
         System.out.println("THANK YOU FOR SHOPPING WITH US");
         System.out.println("***************************************************");
 }
-
-
-     public void clearItemsFromDB() {
-        // delete items after printing receipt.
-        try {
-            String deleteQuery = "DELETE FROM items";
-            PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery);
-            preparedStatement.executeUpdate();
-            
-        } catch (SQLException e) {
-            LOGGER.severe("Database connection failure " + e.getMessage());
-        }   
-
-    }
 
     public void quit(){
         // confirm if they want to quit - cart should be cleared 
@@ -241,7 +206,8 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
             if(quitNow.equalsIgnoreCase("Y")) {
                 clearItemsFromDB();
                 keepShowingMenu = false;
-            }else {
+            }
+            else {
                 keepShowingMenu = true;
             }               
     }
@@ -282,7 +248,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                             if(isPaymentMade) {
                                // display receipt then quit
                                 app.displayReceipt();
-                                app.clearItemsFromDB(); // cart is cleared
+                                clearItemsFromDB(); // cart is cleared
                                 keepShowingMenu = false;
                             } else {
                                 System.out.println("Please make the payment first before printing the receipt");

@@ -1,2 +1,3 @@
-2023-09-30 01:26:12 | main | SEVERE | Oops an error occurred: null
-2023-10-02 05:03:40 | main | SEVERE | Oops an error occurred: null
+2023-10-04 00:38:23 | main | SEVERE | Oops an error occurred: null
+2023-10-04 00:39:39 | addItems | SEVERE | Input should not be negative! Please enter valid values.
+
