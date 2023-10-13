@@ -1,3 +1,5 @@
 2023-10-04 00:38:23 | main | SEVERE | Oops an error occurred: null
 2023-10-04 00:39:39 | addItems | SEVERE | Input should not be negative! Please enter valid values.
 
+2023-10-10 15:15:19 | main | SEVERE | Oops an error occurred: null
+2023-10-13 23:39:38 | main | SEVERE | Oops an error occurred: null
