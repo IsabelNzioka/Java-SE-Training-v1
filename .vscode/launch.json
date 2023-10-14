@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "FilteringAndMapping",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part4.functionalprogramming.FilteringAndMapping",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "FunctionalProgrammingDemo",
       "request": "launch",
       "mainClass": "com.systechafrica.part4.functionalprogramming.FunctionalProgrammingDemo",

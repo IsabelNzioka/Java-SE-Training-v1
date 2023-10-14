@@ -87,7 +87,6 @@ public class FunctionalProgrammingDemo {
     public static void printInfo(List<Integer> list, Predicate<Integer> evenNumberFunction) {
         list.stream().filter(evenNumberFunction)
         .forEach(System.out::println);
-
     }
 
     public static void main(String[] args) {
