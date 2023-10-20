@@ -113,6 +113,7 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
          return discountedAmount;
     }
     
+    // ubuntu20
 
     private void displayItemsFromDB() {
         try {
@@ -258,6 +259,9 @@ public class Store extends ConnectToDatabase implements MembershipDiscount {
                             app.quit();
                             
                         }
+
+                        
+
                         
                         else {
                             System.out.println("Invalid option... try again");
