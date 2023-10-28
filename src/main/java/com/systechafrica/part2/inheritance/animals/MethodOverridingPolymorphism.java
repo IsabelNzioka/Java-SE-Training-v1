@@ -13,5 +13,5 @@ public class MethodOverridingPolymorphism {
         Animal dog2 = new Animal();
         dog2.makeSound();
     }
-    
+
 }

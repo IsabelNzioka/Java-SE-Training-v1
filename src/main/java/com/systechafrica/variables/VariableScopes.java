@@ -7,27 +7,27 @@ public class VariableScopes {
 
     // class variables => They are defined as variables declared outside any class method
 
-    private int  noOfMatchesPlayed = 3;
-    
-   public void simpleMethods() {
-    LOGGER.info("Simple method output" + noOfMatchesPlayed);
-   }
+    private int noOfMatchesPlayed = 3;
 
-    public void complexMethods() {
-    LOGGER.info("complex method output" + noOfMatchesPlayed);
-    // int static age = 10;  // cannot use  static inside a method
-   }
-
-   public int addTwoNumbers(int a, int b) { // method variable scope => Variables defined as parameters and variables 
-    //  declared in the outermost part of the method.  Are available as long as the method is executing
-    int result = a + b;
-    for (int i = 0; i < 5; i++) {   // i - only accessible in this code block
-       LOGGER.info("method output: " + i);
+    public void simpleMethods() {
+        LOGGER.info("Simple method output" + noOfMatchesPlayed);
     }
 
-     return result;
-   }
-    
+    public void complexMethods() {
+        LOGGER.info("complex method output" + noOfMatchesPlayed);
+        // int static age = 10;  // cannot use  static inside a method
+    }
+
+    public int addTwoNumbers(int a, int b) { // method variable scope => Variables defined as parameters and variables
+        //  declared in the outermost part of the method.  Are available as long as the method is executing
+        int result = a + b;
+        for (int i = 0; i < 5; i++) {   // i - only accessible in this code block
+            LOGGER.info("method output: " + i);
+        }
+
+        return result;
+    }
+
     public static void main(String[] args) {
         VariableScopes app = new VariableScopes();
         app.simpleMethods();

@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)  //? default instance
-public class AppTest 
-{
+public class AppTest {
 
     // ? Reference => App
     App app = new App();
@@ -33,5 +32,5 @@ public class AppTest
         Assertions.assertEquals(expected, result, " The sum of 8 - 3 should be 5");
 
     }
- 
+
 }

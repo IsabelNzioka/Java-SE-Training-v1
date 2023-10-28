@@ -10,29 +10,34 @@ public class Employee {
         this.employeeName = employeeName;
         this.employeeAddress = employeeAddress;
     }
-    
+
     public String getEmployeeNo() {
         return employeeNo;
     }
+
     public void setEmployeeNo(String employeeNo) {
         this.employeeNo = employeeNo;
     }
+
     public String getEmployeeName() {
         return employeeName;
     }
+
     public void setEmployeeName(String employeeName) {
         this.employeeName = employeeName;
     }
+
     public String getEmployeeAddress() {
         return employeeAddress;
     }
+
     public void setEmployeeAddress(String employeeAddress) {
         this.employeeAddress = employeeAddress;
     }
 
     @Override
     public String toString() {
-        return "Name: " + employeeName+" No: " + employeeNo+" Address: " +employeeAddress ;
+        return "Name: " + employeeName + " No: " + employeeNo + " Address: " + employeeAddress;
     }
-   
+
 }

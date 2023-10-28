@@ -13,16 +13,16 @@ public class Calculator {
     }
 
     public long sum(long a, long b) { // modify data types
-        return  (a + b);
+        return (a + b);
     }
 
     public long sum(int a, long b) { // sequence of parameters
-        return a +  b;
+        return a + b;
     }
 
     // method can change the return type
     public long sum(long a, int b) { // sequence of parameters
-        return a + b; 
+        return a + b;
     }
 
     // modifying access modifier
@@ -32,7 +32,7 @@ public class Calculator {
 
     public static void main(String[] args) {
         Calculator app = new Calculator();
-        
+
     }
 
 }

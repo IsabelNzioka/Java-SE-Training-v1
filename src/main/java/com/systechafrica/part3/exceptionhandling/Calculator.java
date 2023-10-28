@@ -4,19 +4,19 @@ public class Calculator {
     public double divide(int a, int b) {
         // double result = 0.0;
         try {
-           return   a/b;
+            return a / b;
         } catch (ArithmeticException e) {
-          System.out.println(e.getMessage());
-          return 0;
-        }     
+            System.out.println(e.getMessage());
+            return 0;
+        }
     }
 
-       public double divide(long a, long b) {
+    public double divide(long a, long b) {
         double result = 0.0;
-        result = a/b;
-           return   result;        
+        result = a / b;
+        return result;
     }
-   
+
     // NullPointerException
 
     public boolean connect() throws ClassNotFoundException {
@@ -26,7 +26,7 @@ public class Calculator {
         return true;
     }
 
-    public int sum(int a, int b) throws MyCustomException{
+    public int sum(int a, int b) throws MyCustomException {
         throw new MyCustomException("Method not implemented");
         // Exception e = new MyCustomException("Method not implemented");
     }

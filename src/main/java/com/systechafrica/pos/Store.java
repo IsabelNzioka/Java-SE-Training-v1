@@ -14,8 +14,8 @@ public class Store {
     static boolean isCustomerShopping = true;
     static boolean isPaymentMade = false;
 
-     int change;
-     int amountPaidByCustomer = 0;
+    int change;
+    int amountPaidByCustomer = 0;
 
 
     public void displayMenu() {
@@ -24,7 +24,7 @@ public class Store {
         System.out.println("-------------------------------------");
         System.out.println("1. ADD ITEM");
         System.out.println("2. MAKE PAYMENT");
-        System.out.println("3. DISPLAY RECEIPT");  
+        System.out.println("3. DISPLAY RECEIPT");
 
         // TODO - QUIT MENU OPTION.
     }
@@ -37,19 +37,19 @@ public class Store {
         for (int i = 0; i < noOfItemsToPurchase; i++) {
             System.out.print("Enter the Item Code: ");
             int itemCode = scanner.nextInt();
-    
-             System.out.print("Enter the quantity: ");
+
+            System.out.print("Enter the quantity: ");
             int quantity = scanner.nextInt();
-            scanner.nextLine(); 
-    
+            scanner.nextLine();
+
             System.out.print("Enter the unit price: ");
             int unitPrice = scanner.nextInt();
 
-            totalPayment += (quantity * unitPrice); 
+            totalPayment += (quantity * unitPrice);
 
             // Add item to the items array
             Item s = new Item(itemCode, quantity, unitPrice);
-     
+
 
             // items[i] = s;
             items.add(s);  //keep track of all added items       
@@ -60,8 +60,8 @@ public class Store {
         System.out.println("_________________________________________________");
         System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
         for (Item item : items) {
-            System.out.printf("%-10s %-12s %-9s %-10s%n", item.getItemCode(),item.getQuantity(), item.getUnitPrice(), item.getTotalValue());
-           
+            System.out.printf("%-10s %-12s %-9s %-10s%n", item.getItemCode(), item.getQuantity(), item.getUnitPrice(), item.getTotalValue());
+
         }
         System.out.println("___________________________________________________");
         System.out.println("TOTAL:     " + totalPayment);
@@ -71,9 +71,9 @@ public class Store {
         scanner.nextLine();
         //  TODO - CHECK IF THERE IS AN ITEM BEFORE MAKING PAYMENT.
         // TODO - INSUFFICIENT AMOUNT.
-        if(amountPaidByCustomer > totalPayment) {
+        if (amountPaidByCustomer > totalPayment) {
             change = amountPaidByCustomer - totalPayment;
-        } 
+        }
 
         System.out.println("Change:     " + change);
         System.out.println("***************************************************");
@@ -85,21 +85,21 @@ public class Store {
 
 
     public void displayReceipt() {
-                System.out.println("_________________________________________________");
-                System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
-                for (Item item : items) {
-                    System.out.printf("%-10s %-12s %-9s %-10s%n", item.getItemCode(),item.getQuantity(), item.getUnitPrice(), item.getTotalValue());
-                
-                }
-                System.out.println("___________________________________________________");
-                System.out.println("TOTAL:     " + totalPayment);
-                System.out.println("Amount paid: " + amountPaidByCustomer);
-                System.out.println("Change:     " + change);
-                System.out.println("***************************************************");
-                System.out.println("THANK YOU FOR SHOPPING WITH US");
-                System.out.println("***************************************************");
+        System.out.println("_________________________________________________");
+        System.out.println("ItemCode   Quantity   UnitPrice   TotalPrice");
+        for (Item item : items) {
+            System.out.printf("%-10s %-12s %-9s %-10s%n", item.getItemCode(), item.getQuantity(), item.getUnitPrice(), item.getTotalValue());
+
+        }
+        System.out.println("___________________________________________________");
+        System.out.println("TOTAL:     " + totalPayment);
+        System.out.println("Amount paid: " + amountPaidByCustomer);
+        System.out.println("Change:     " + change);
+        System.out.println("***************************************************");
+        System.out.println("THANK YOU FOR SHOPPING WITH US");
+        System.out.println("***************************************************");
     }
-    
+
     public static void main(String[] args) {
         Store app = new Store();
 
@@ -113,39 +113,39 @@ public class Store {
                 // Y -continue shopping
                 // N - showMenu 
                 app.displayMenu();
-            
+
                 try {
                     System.out.println("Choose your option");
                     int option = app.scanner.nextInt();
                     app.scanner.nextLine();
 
-                    if (option == 1 ) {
-                        while(isCustomerShopping) {
+                    if (option == 1) {
+                        while (isCustomerShopping) {
                             app.addItems();
 
-                                System.out.println("Would you like to add more items?: Y/N");
-                                String continueShopping = app.scanner.next();
+                            System.out.println("Would you like to add more items?: Y/N");
+                            String continueShopping = app.scanner.next();
 
-                                if(continueShopping.equalsIgnoreCase("N")) {
-                                    // end shopping - display menu
-                                    // System.out.println(totalPayment);
-                                    isCustomerShopping=false;
-                                 }
+                            if (continueShopping.equalsIgnoreCase("N")) {
+                                // end shopping - display menu
+                                // System.out.println(totalPayment);
+                                isCustomerShopping = false;
+                            }
                         }
                         System.out.println("Thank you for shopping with us - Proceed to payment/receipt printing.");
-          
+
                     } else if (option == 2) {
                         // make payment
                         app.payment();
                     } else if (option == 3) {
-                        if(isPaymentMade) {
-                           // display receipt then quit
+                        if (isPaymentMade) {
+                            // display receipt then quit
                             app.displayReceipt();
                             keepShowingMenu = false;
                         } else {
                             System.out.println("Please make the payment first before printing the receipt");
                         }
-                          
+
                     } else {
                         System.out.println("Invalid option... try again");
                     }
@@ -155,7 +155,7 @@ public class Store {
                 }
             }
         } else {
-            System.out.println("Maximum attempts failed"); 
+            System.out.println("Maximum attempts failed");
         }
         app.scanner.close();
     }

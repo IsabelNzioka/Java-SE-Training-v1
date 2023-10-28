@@ -11,12 +11,12 @@ public class StudentDto {
     }
 
 
-     @Override
+    @Override
     public String toString() {
         return "StudentDto{" +
                 "firstName='" + firstName + '\'' +
                 ", regNo='" + regNo + '\'' +
                 '}';
     }
-    
+
 }

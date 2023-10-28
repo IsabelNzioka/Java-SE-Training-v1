@@ -8,6 +8,7 @@ public class SoftwareEngineer extends Employee {
         super(employeeNo, employeeName, employeeAddress);
         this.title = title;
     }
+
     public String getTitle() {
         return title;
     }
@@ -16,6 +17,7 @@ public class SoftwareEngineer extends Employee {
         this.title = title;
 
     }
+
     @Override
     public String toString() {
         return "Name: " + super.getEmployeeName() +

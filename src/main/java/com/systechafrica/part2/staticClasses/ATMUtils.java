@@ -7,5 +7,5 @@ public class ATMUtils {
         String mask = "XXXXXXXXXXXX";
         String postfix = cardNumber.substring(12, cardNumber.length()); //last numbers from index 12
         return mask + postfix;
-    }  
+    }
 }

@@ -16,67 +16,65 @@ public class ATMApplicationMhusika {
         ATMApplicationMhusika app = new ATMApplicationMhusika();
         boolean loggedIn = app.login();
 
-        if(loggedIn) {
+        if (loggedIn) {
             System.out.println("Logged in successfully");
             // ? show menu
             boolean keepShowingMenu = true;
-            
-            while(keepShowingMenu){ // while(true)
+
+            while (keepShowingMenu) { // while(true)
                 app.displayMenu();
 
                 try {
-                        System.out.println("Choose your option");
-                int option = app.scanner.nextInt();
-               
-              
+                    System.out.println("Choose your option");
+                    int option = app.scanner.nextInt();
 
-                  switch(option) {
-                    case 1: 
-                        app.checkBalance();
-                        break;
-                    case 2: 
-                        app.performDeposit();
-                        break;
-                    case 3: 
-                        app.performWithdrawal();
-                        break;
-                    case 4:
-                        app.performTransfer();
-                        break;   
-                    case 5: 
-                        keepShowingMenu = false;
-                        break;
-                    default: 
-                        System.out.println("Invalid option... try again");
-                        break;
-                }
-                    
+
+                    switch (option) {
+                        case 1:
+                            app.checkBalance();
+                            break;
+                        case 2:
+                            app.performDeposit();
+                            break;
+                        case 3:
+                            app.performWithdrawal();
+                            break;
+                        case 4:
+                            app.performTransfer();
+                            break;
+                        case 5:
+                            keepShowingMenu = false;
+                            break;
+                        default:
+                            System.out.println("Invalid option... try again");
+                            break;
+                    }
+
                 } catch (Exception e) {
-                  
+
                     app.scanner.nextLine(); //? this is to clear the \n character that is retained when using scanner with nextInt
                     System.out.println("Invalid option - Integers only... try again");
                     // app.scanner.nextLine();
                 }
-            
 
-              
+
             }
 
         } else {
             System.out.println("Naximum attemps failed");
         }
-        
+
     }
 
     public boolean login() {
         //? try three times, exit if not logged in
         int loginEnteries = 1;
         boolean loggedIn = false;
-        while(loginEnteries <= 3) {
+        while (loginEnteries <= 3) {
             System.out.println("Enter password");
             String userPassword = scanner.nextLine();
-            if(userPassword.equals(DEFAULT_PASSWORD)) {
-              
+            if (userPassword.equals(DEFAULT_PASSWORD)) {
+
                 // show menu
                 loggedIn = true;
                 break;
@@ -85,7 +83,7 @@ public class ATMApplicationMhusika {
             loginEnteries++;
         }
         return loggedIn;
-        
+
     }
 
     public void displayMenu() {
@@ -103,7 +101,7 @@ public class ATMApplicationMhusika {
         System.out.println("''''''''''''''''''''''''''''''''''''\n");
 
         // System.out.print("Choose your option: ");
-        
+
     }
 
     public void checkBalance() {
@@ -119,21 +117,23 @@ public class ATMApplicationMhusika {
         runningBalance += amountToDeposit; // runningBalance = runningBalance + amountToDeposit
 
     }
+
     public void performWithdrawal() {
         // ? get the amount to withdraw
         // ? calculate the amount to withdraw + charges
         // ? check if running balance is sufficient.
-        
+
     }
+
     public void performTransfer() {
         // ? get the amount to transfer
         // ? subtract amount from the balance.
-        
+
     }
 
     public void printReceipt() {
         // ? print the infromation about the transaction.
-        
+
     }
-    
+
 }

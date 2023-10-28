@@ -6,11 +6,11 @@ public class Book {
     String title;
 
     // public static void main(String[] args) {
-        // this.isbn = "67490323784959";
+    // this.isbn = "67490323784959";
     // }
-    void printBookDetails(){
-        System.out.println(isbn+ "-> "+title);
+    void printBookDetails() {
+        System.out.println(isbn + "-> " + title);
     }
 
-    
+
 }

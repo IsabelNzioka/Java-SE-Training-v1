@@ -27,13 +27,13 @@ public class ClassesDemo {
         ann.doAssignment();
         ann.attendClass();
 
-        Intern asule = new Intern("Asule","","");
+        Intern asule = new Intern("Asule", "", "");
         asule.doAssignment();
         asule.attendClass();
         System.out.println(asule.name);
 
         for (int i = 1; i <= 10; i++) {
-            Intern intern = new Intern("Intern-"+i, ""+i,""+i);
+            Intern intern = new Intern("Intern-" + i, "" + i, "" + i);
             System.out.println(intern.name);
         }
 

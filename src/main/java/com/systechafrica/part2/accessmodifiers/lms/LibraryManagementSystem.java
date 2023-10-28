@@ -8,5 +8,5 @@ public class LibraryManagementSystem {
         book.title = "Java Programming";   //!  Accessed here because they both in the same package
         book.printBookDetails();
     }
-    
+
 }

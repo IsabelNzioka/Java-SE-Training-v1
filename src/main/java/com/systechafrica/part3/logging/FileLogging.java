@@ -17,7 +17,7 @@ public class FileLogging {
         FileHandler fileHandler = new FileHandler("log.txt", true);
 
         CustomFormatter formatter = new CustomFormatter();
-       
+
         LOGGER.addHandler(fileHandler);
         fileHandler.setFormatter(formatter);
 
@@ -31,7 +31,7 @@ public class FileLogging {
     public static void test() {
         LOGGER.info("Info message Logging test\n");
         LOGGER.severe("Error message logging test\n");
-        LOGGER.warning("Warning message Logging test\n"); 
+        LOGGER.warning("Warning message Logging test\n");
     }
 
     // static class CustomeFormatter extends Formatter {
@@ -48,7 +48,7 @@ public class FileLogging {
     //         LocalDateTime now = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
     //         return pattern.format(now) + " | " + method + " | " + level + " | " + message;
     //     }
-        
+
     // }
-    
+
 }

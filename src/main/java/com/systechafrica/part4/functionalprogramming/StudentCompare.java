@@ -4,5 +4,5 @@ package com.systechafrica.part4.functionalprogramming;
 public interface StudentCompare {
 
     boolean compare(Student studentOne, Student studentTwo);
-    
+
 }

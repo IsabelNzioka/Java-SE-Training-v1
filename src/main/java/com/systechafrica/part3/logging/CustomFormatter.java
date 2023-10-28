@@ -8,18 +8,18 @@ import java.util.logging.Formatter;
 import java.util.logging.LogRecord;
 
 public class CustomFormatter extends Formatter {
-        @Override
-        public String format(LogRecord record) {
-            DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            // LocalDateTime now = LocalDateTime.now();
+    @Override
+    public String format(LogRecord record) {
+        DateTimeFormatter pattern = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        // LocalDateTime now = LocalDateTime.now();
 
-            String method = record.getSourceMethodName();
-            String level = record.getLevel().getName();
-            String message = record.getMessage();
+        String method = record.getSourceMethodName();
+        String level = record.getLevel().getName();
+        String message = record.getMessage();
 
-            Instant instant = record.getInstant();
-            LocalDateTime now = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
-            return pattern.format(now) + " | " + method + " | " + level + " | " + message + "\n";
-        }
-        
+        Instant instant = record.getInstant();
+        LocalDateTime now = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
+        return pattern.format(now) + " | " + method + " | " + level + " | " + message + "\n";
     }
+
+}

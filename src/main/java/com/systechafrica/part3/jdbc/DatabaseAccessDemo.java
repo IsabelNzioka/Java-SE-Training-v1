@@ -18,9 +18,9 @@ public class DatabaseAccessDemo {
     private static final Logger LOGGER = Logger.getLogger(DatabaseAccessDemo.class.getName());
     private static Connection connection;
 
-     public static void main(String[] args) {
-            Scanner scanner = new Scanner(System.in);
-            FileHandler fileHandler;
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        FileHandler fileHandler;
         try {
             fileHandler = new FileHandler("workingWithDatabase.txt", true);
             CustomFormatter formatter = new CustomFormatter();
@@ -32,42 +32,42 @@ public class DatabaseAccessDemo {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
             // create a connection to the database
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/workingwithdatabase", "root", "Nzioka15*");   
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/workingwithdatabase", "root", "Nzioka15*");
 
 
             // Create a statement from the connection.
-            Statement statement =  connection.createStatement();
+            Statement statement = connection.createStatement();
 
             String createTasksTable = "CREATE TABLE IF NOT EXISTS tasks (task_id INT AUTO_INCREMENT PRIMARY KEY,title VARCHAR(255) NOT NULL,start_date DATE,due_date DATE,status TINYINT NOT NULL,priority TINYINT NOT NULL,description TEXT,created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)  ENGINE=INNODB;";
-        
-        // execute Queries
-           int updateStatus =  statement.executeUpdate(createTasksTable);
-           LOGGER.info("Update status= " + updateStatus);
 
-       // execute Insert statement
-        // String insertQuery = "insert into tasks (title,start_date,due_date,status,priority,description)values('Add driver to the pom.xml','2023-09-22','2023-09-25',0,1,'updating drivers to the class path');";
-        // int numberofRowsInserted =   statement.executeUpdate(insertQuery);
-        // LOGGER.info("Number of Rows Inserted= " + numberofRowsInserted);
-        String insertQuery = "insert into tasks (title,start_date,due_date,status,priority,description)values(?,?,?,?,?,?);";
-        PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
+            // execute Queries
+            int updateStatus = statement.executeUpdate(createTasksTable);
+            LOGGER.info("Update status= " + updateStatus);
 
-        // Read task details
-        Task task = getTaskFromUser(scanner);
-        preparedStatement.setString(1, task.getTitle());
-        preparedStatement.setString(2, task.getStartDate().toString());
-        preparedStatement.setString(3, task.getDueDate().toString());
-        preparedStatement.setInt(4, task.getTaskStatus());
-        preparedStatement.setInt(5, task.getPriority());
-        preparedStatement.setString(6, task.getDescription());
+            // execute Insert statement
+            // String insertQuery = "insert into tasks (title,start_date,due_date,status,priority,description)values('Add driver to the pom.xml','2023-09-22','2023-09-25',0,1,'updating drivers to the class path');";
+            // int numberofRowsInserted =   statement.executeUpdate(insertQuery);
+            // LOGGER.info("Number of Rows Inserted= " + numberofRowsInserted);
+            String insertQuery = "insert into tasks (title,start_date,due_date,status,priority,description)values(?,?,?,?,?,?);";
+            PreparedStatement preparedStatement = connection.prepareStatement(insertQuery);
 
-        int noOfRows = preparedStatement.executeUpdate();
-        LOGGER.info("Number of Rows=" + noOfRows);
+            // Read task details
+            Task task = getTaskFromUser(scanner);
+            preparedStatement.setString(1, task.getTitle());
+            preparedStatement.setString(2, task.getStartDate().toString());
+            preparedStatement.setString(3, task.getDueDate().toString());
+            preparedStatement.setInt(4, task.getTaskStatus());
+            preparedStatement.setInt(5, task.getPriority());
+            preparedStatement.setString(6, task.getDescription());
 
-        // Execute Selection
-           String selectQuery = "SELECT * from tasks;";
+            int noOfRows = preparedStatement.executeUpdate();
+            LOGGER.info("Number of Rows=" + noOfRows);
+
+            // Execute Selection
+            String selectQuery = "SELECT * from tasks;";
             ResultSet resultSet = statement.executeQuery(selectQuery);
             while (resultSet.next()) {
-                
+
                 // task_id,title,start_date,due_date,status,priority,description
                 int id = resultSet.getInt("task_id");
                 String title = resultSet.getString("title");
@@ -84,31 +84,29 @@ public class DatabaseAccessDemo {
 
             }
 
-              // release resources bottom up
-              resultSet.close();
-              preparedStatement.close();
-              statement.close();
-              connection.close();
+            // release resources bottom up
+            resultSet.close();
+            preparedStatement.close();
+            statement.close();
+            connection.close();
 
-            
+
         } catch (SecurityException e) {
             LOGGER.severe("Unable to obtain security permissions for the Log file" + e.getMessage());
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             LOGGER.severe("Unable to obtain read/write permissions for the Log file" + e.getMessage());
-        }
-         catch (ClassNotFoundException e) {
+        } catch (ClassNotFoundException e) {
             LOGGER.severe("Unable to obtain class for jdbc driver" + e.getMessage());
-        } catch (SQLException e) {  
+        } catch (SQLException e) {
             LOGGER.severe("Database connection failure" + e.getMessage());
         } catch (Exception e) {
             LOGGER.severe("Oops an error occurred: " + e.getMessage());
         }
-         
-     }
+
+    }
 
 
-     private static Task getTaskFromUser(Scanner scanner) { //return a task object
+    private static Task getTaskFromUser(Scanner scanner) { //return a task object
         // read inputs
         // title,start_date,due_date,status,priority,description
         System.out.println("Enter task title: ");

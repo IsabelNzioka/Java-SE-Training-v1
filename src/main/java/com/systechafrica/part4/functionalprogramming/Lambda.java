@@ -8,7 +8,7 @@ public class Lambda {
 
 
     public static void main(String[] args) {
-        
+
         // ? Single line lambda function
         LambdaFun func = () -> UUID.randomUUID().toString();
 
@@ -28,13 +28,13 @@ public class Lambda {
         //* Lambda function which does not return a value - but takes in a single parameter
         GenerateReport report = (student) -> {
             System.out.println("****SYSTECH INTERNSHIP PROGRAMME REPORT****");
-            System.out.println("NAME: " +  student.getFirstName());
+            System.out.println("NAME: " + student.getFirstName());
             System.out.println("EMAIL: " + student.getEmail());
             System.out.println("REG: " + student.getRegNo());
 
         };
 
-             // * Lambda function which does not return a value - but takes in a single
+        // * Lambda function which does not return a value - but takes in a single
         // parameter
         // ? you can avoid the parenthesis when only its a single parameter
         GenerateReport report2 = (student) -> {
@@ -55,16 +55,15 @@ public class Lambda {
         };
 
 
+        Student student1 = new Student(1, "Tony", "tony@gmail.com", "001");
+        Student student2 = new Student(2, "tony", "mackrine@gmail.com", "002");
 
-            Student student1 = new Student(1, "Tony", "tony@gmail.com", "001");
-            Student student2 = new Student(2, "tony", "mackrine@gmail.com", "002");
-
-            report.generateReport(student2);
-            report2.generateReport(student1);
+        report.generateReport(student2);
+        report2.generateReport(student1);
 
 
-            // * Lambda funtion that takes in more than one parameter and returns a value
-            // * You have to use parentesis if there is more than one parameter
+        // * Lambda funtion that takes in more than one parameter and returns a value
+        // * You have to use parentesis if there is more than one parameter
         StudentCompare studentCompare = (Student studentOne, Student studentTwo) -> {
             // logic goes here
             System.out.println(studentOne.getFirstName());
@@ -85,9 +84,23 @@ public class Lambda {
             return studentOne.getFirstName().equalsIgnoreCase(studentTwo.getFirstName()); //true
             // return studentOne.getFirstName().equals(studentTwo.getFirstName()); //false
         };
-    
-        
+
+        CompareFunction<Student, Student, Boolean> studentCompare3 = (Student studentOne, Student studentTwo) -> {
+            // logic goes here
+            System.out.println(studentOne.getFirstName());
+            System.out.println(studentTwo.getFirstName());
+
+            return studentOne.getFirstName().equalsIgnoreCase(studentTwo.getFirstName()); //true
+            // return studentOne.getFirstName().equals(studentTwo.getFirstName()); //false
+        };
+
+
+        CompareFunction<LocalDate, LocalDate, Boolean> dateCompare = (date1, date2) -> date1.isAfter(date2);
+
         System.out.println(studentCompare.compare(student1, student2));
+        System.out.println(studentCompare2.compare(student1, student2));
+        System.out.println(studentCompare3.compare(student1, student2));
+        System.out.println(dateCompare.compare(LocalDate.now(), LocalDate.of(2023, Month.JANUARY, 1)));
     }
-    
+
 }

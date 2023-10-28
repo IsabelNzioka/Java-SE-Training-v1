@@ -5,5 +5,5 @@ public interface LambdaFun {
 
     // only one abstract method
     String generateRandomUUID();
-    
+
 }

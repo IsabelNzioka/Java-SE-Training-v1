@@ -7,7 +7,7 @@ public class StudentMS {
     public static void main(String[] args) {
         // register students 3
         // you have the total number of students
-       
+
 
         Scanner scanner = new Scanner(System.in);
 
@@ -24,7 +24,7 @@ public class StudentMS {
             String regNo = scanner.nextLine();
             System.out.print("Enter the student name: ");
             String name = scanner.nextLine();
-            
+
             Student s = new Student(studentId, regNo, name);
             students[i] = s;
 
@@ -32,10 +32,7 @@ public class StudentMS {
         System.out.println(students[0].toString());
         System.out.println(students[1].toString());
 
-     
 
-
-        
         scanner.close();
     }
 

@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Calculator {
 
     // Instance => does not have static keyword => can be accessed using object of the class.
-    public int sum(int a, int b, int ...otherNumbers) { //! var args
+    public int sum(int a, int b, int... otherNumbers) { //! var args
         int sum = a + b;
 
         for (int i = 0; i < otherNumbers.length; i++) {
@@ -18,7 +18,7 @@ public class Calculator {
     //     return a + b + c + d;
     // }
 
-    public static void main(String ...args) {
+    public static void main(String... args) {
         Calculator calculator = new Calculator();
 
         Scanner scanner = new Scanner(System.in);
@@ -32,5 +32,5 @@ public class Calculator {
         System.out.println(calculator.sum(10, 20, 90, 30, 50, 50, 90));
 
     }
-    
+
 }

@@ -17,7 +17,7 @@ public class Student {
         this.regNo = regNo;
     }
 
-    public int getId() {                                                                                             
+    public int getId() {
         return id;
     }
 
@@ -45,6 +45,6 @@ public class Student {
     public String toString() {
         return "Student [id=" + id + ", regNo=" + regNo + ", name=" + name + "]";
     }
-  
+
 
 }

@@ -1,13 +1,10 @@
 package com.systechafrica.extras;
 
-public   class Book {  
-    int r;
-    Book(int r) {
-        this.r = r;
+public class Book {
+
+    public void test() {
+        System.out.println("Base ");
     }
 
-    public void showText() {
-        System.out.println("r - " + r);
-    }
-    
+
 }

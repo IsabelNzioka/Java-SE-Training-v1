@@ -8,5 +8,5 @@ public class WorkingWithSets {
     public static void main(String[] args) {
         Set<Student> students = new HashSet<>();
     }
-    
+
 }

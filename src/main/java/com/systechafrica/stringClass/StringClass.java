@@ -3,12 +3,11 @@ package com.systechafrica.stringClass;
 import java.util.logging.Logger;
 
 public class StringClass {
-private static final Logger LOGGER = Logger.getLogger(StringClass.class.getName());
-  
-   
+    private static final Logger LOGGER = Logger.getLogger(StringClass.class.getName());
+
 
     public void stringObjects() {
-         // ! STRINGS ARE IMMUTABLE - ONCE CEATED THEY CANNOT BE MODIFIED
+        // ! STRINGS ARE IMMUTABLE - ONCE CEATED THEY CANNOT BE MODIFIED
         // ! UNLESS THEY ARE REASSIGNED AGAIN
 
         String message = "Hello";
@@ -24,13 +23,12 @@ private static final Logger LOGGER = Logger.getLogger(StringClass.class.getName(
         String firstName = "Isabel";
         String lastName = "Nzioka";
         String fullName = firstName + " " + lastName;
-        LOGGER.info((fullName ));
+        LOGGER.info((fullName));
 
         // ? SUBSTRING EXTRACTION
         String sentence = "I love Java programming";
         String substring = sentence.substring(2, 6);
         LOGGER.info(substring); //love 
-
 
 
         // ? STRING  COMPARISON  - equals
@@ -64,7 +62,7 @@ private static final Logger LOGGER = Logger.getLogger(StringClass.class.getName(
 
 
         String str3 = "Java Program";
-       
+
 
         System.out.println(str1);
         System.out.println(str2);
@@ -73,17 +71,13 @@ private static final Logger LOGGER = Logger.getLogger(StringClass.class.getName(
         System.out.println(str3.compareTo(str5));  //-19  - the difference btwn the ASCII code
 
 
-    
-        
-
-
     }
 
     public static void main(String[] args) {
         StringClass app = new StringClass();
 
-     
+
         app.stringObjects();
     }
-    
+
 }

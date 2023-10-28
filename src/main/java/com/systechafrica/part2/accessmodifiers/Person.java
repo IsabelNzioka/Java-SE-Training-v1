@@ -4,7 +4,7 @@ public class Person {
     private String name;
     private String email;
 
-    private boolean promoted;    
+    private boolean promoted;
 
     // setters and getters
 
@@ -37,8 +37,9 @@ public class Person {
         this.name = name;
         this.email = email;
     }
-    public Person(){
-        
+
+    public Person() {
+
     }
 
     public void printPersonalDetails() {

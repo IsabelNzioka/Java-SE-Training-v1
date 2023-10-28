@@ -1,5 +1,8 @@
 package com.systechafrica.part4.functionalprogramming;
 
-public class Divider {
-    
+
+@FunctionalInterface
+public interface Divider {
+ int divide(int a, int b) throws Exception;
+
 }

@@ -5,5 +5,5 @@ public class RandomClass {
     // cannot access non-static members of the enclosing class - without having an object of the classs
     // can be public or package-private.
     // 
-    
+
 }

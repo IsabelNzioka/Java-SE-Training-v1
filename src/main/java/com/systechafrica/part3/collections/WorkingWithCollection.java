@@ -25,8 +25,8 @@ public class WorkingWithCollection {
         System.out.println(students.contains(student1));
 
         // set - updating values
-         Student student = new Student("Tonny", "001", "tonny@gmail.com");
-        students.set(0,student );
+        Student student = new Student("Tonny", "001", "tonny@gmail.com");
+        students.set(0, student);
 
         // indexof
         System.out.println(students.indexOf(student));
@@ -37,7 +37,7 @@ public class WorkingWithCollection {
         students.add(student1);
         students.remove(student1);
 
-         printList(students);
+        printList(students);
 
         //  clear
         students.clear();
@@ -45,13 +45,13 @@ public class WorkingWithCollection {
         System.out.println(students.isEmpty());
         // System.out.println(students);
 
-       
+
     }
 
     private static void printList(List<Student> students) {
-        for(int i = 0; i <students.size(); i++) {
+        for (int i = 0; i < students.size(); i++) {
             System.out.println(students.get(i));
         }
-      }
-    
+    }
+
 }

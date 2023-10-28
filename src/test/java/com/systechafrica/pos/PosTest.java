@@ -9,7 +9,7 @@ public class PosTest {
 
     @Test
     public void testItem() {
-        
+
         Item item = new Item();
 
         // Set values for item properties
@@ -25,11 +25,11 @@ public class PosTest {
         Assertions.assertEquals(50, item.getUnitPrice());
         Assertions.assertEquals(expectedTotalValue, item.getTotalValue()); // TotalValue should be quantity * unitPrice
     }
-    
+
 
     @Test
     public void testItemConstructor() {
-      
+
         Item item = new Item(123, 2, 50);
 
         // Verify that the getters return the expected values

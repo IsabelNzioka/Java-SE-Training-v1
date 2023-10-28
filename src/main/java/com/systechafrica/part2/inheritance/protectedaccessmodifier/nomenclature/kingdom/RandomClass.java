@@ -6,7 +6,7 @@ public class RandomClass {
     //! accessible in the same package
     public void sample() {
         Kingdom kingdom = new Kingdom();
-        kingdom.randomString="test";
+        kingdom.randomString = "test";
     }
-    
+
 }

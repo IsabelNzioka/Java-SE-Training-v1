@@ -24,7 +24,7 @@ public class FunctionalProgrammingDemo {
         // Calculator calculator = (a, b) -> a + b;
         Calculator calculator = (a, b, numbers) -> {
             int sum = a + b;
-            for(int number:numbers) {
+            for (int number : numbers) {
                 sum += number;
             }
             return sum;
@@ -42,15 +42,16 @@ public class FunctionalProgrammingDemo {
 
     }
 
-    public boolean evenNumbers(int number){
+    public boolean evenNumbers(int number) {
         return number % 2 == 0;
     }
-     public int mapToSquare(int number){
+
+    public int mapToSquare(int number) {
         return number * number;
     }
 
     public void filterAndMapNormalWay() {
-        List<Integer> numbers = List.of(1,2,3,4,5);
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
         // create a stream
         Stream<Integer> stream = numbers.stream();
 
@@ -65,19 +66,19 @@ public class FunctionalProgrammingDemo {
         Stream<Integer> squareIntegerStream = filteredStream.map(number -> number * number);
 
         // display final product
-        squareIntegerStream.forEach(number -> System.out.println(number));   
+        squareIntegerStream.forEach(number -> System.out.println(number));
 
     }
 
 
-       public void filterAndMapChaining() {
-        List<Integer> numbers = List.of(1,2,3,4,5);
-         numbers.stream()
+    public void filterAndMapChaining() {
+        List<Integer> numbers = List.of(1, 2, 3, 4, 5);
+        numbers.stream()
                 .filter(number -> number % 2 == 0)
                 .map(number -> number * number)
-                .forEach(number -> System.out.println(number));   
+                .forEach(number -> System.out.println(number));
 
-                printInfo(numbers, (number) -> number % 2 == 0);
+        printInfo(numbers, (number) -> number % 2 == 0);
 
     }
 
@@ -86,7 +87,7 @@ public class FunctionalProgrammingDemo {
 
     public static void printInfo(List<Integer> list, Predicate<Integer> evenNumberFunction) {
         list.stream().filter(evenNumberFunction)
-        .forEach(System.out::println);
+                .forEach(System.out::println);
     }
 
     public static void main(String[] args) {
@@ -94,10 +95,7 @@ public class FunctionalProgrammingDemo {
         // demo.functions();
         // demo.lambdaInFunction();
         // demo.filterAndMapNormalWay();
-         demo.filterAndMapChaining();
-
-
-
+        demo.filterAndMapChaining();
 
 
     }

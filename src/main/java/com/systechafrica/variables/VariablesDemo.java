@@ -5,7 +5,7 @@ import java.util.logging.Logger;
 
 public class VariablesDemo {
     private static final Logger LOGGER = Logger.getLogger(VariablesDemo.class.getName());
-  
+
     private void variableDeclarations() {
         //integer variable
         // ? type variableName
@@ -13,16 +13,16 @@ public class VariablesDemo {
         LOGGER.info("Score integer variable value is " + score);
     }
 
-    private  void constantVariables() {
-         // ? constant variable
+    private void constantVariables() {
+        // ? constant variable
         // final type variableName = value;
         final double PI = 3.14159;
         LOGGER.info("Constant variable PI = " + PI);
-}
+    }
 
 
     private void integerTypes() {
-       // integer variable
+        // integer variable
         // ? type variableName
         int score = 99;
         LOGGER.info("Score integer variable value is: " + score);
@@ -33,7 +33,7 @@ public class VariablesDemo {
         LOGGER.info("Long Minimum " + Long.MAX_VALUE);
 
 
-         // byte, short, int, long
+        // byte, short, int, long
         //? Wrapper classes
 
         byte aPrimitive = 23;
@@ -43,16 +43,16 @@ public class VariablesDemo {
         LOGGER.info("Byte wrapper " + aWrapper);
 
         int a = aWrapper.intValue();
-    
 
-        LOGGER.info("Integer value from Byte wrapper " + a );
+
+        LOGGER.info("Integer value from Byte wrapper " + a);
 
         //short 
         short s = 23;
         Short aShort = 23;
 
         // integer 
-        int c =23;
+        int c = 23;
         Integer aInt = 23;
 
         // long 
@@ -61,7 +61,7 @@ public class VariablesDemo {
         Long aLong = 23L;
     }
 
-    private void floatingTypes(){
+    private void floatingTypes() {
         // float type
         float floatRate = 2.1457454F;
         double doubleRate = 2.1457454;
@@ -75,13 +75,13 @@ public class VariablesDemo {
         // double
         double priceNew = 0.2365F;
         Double priceDouble = 0.2365;
-        
+
     }
 
-      private void characterTypes(){
+    private void characterTypes() {
         // character type
-       char grade = 'A';
-        LOGGER.info("character value: " + grade);  
+        char grade = 'A';
+        LOGGER.info("character value: " + grade);
 
         // character type
         Character characterType = 'A';
@@ -89,27 +89,26 @@ public class VariablesDemo {
     }
 
 
-      private void booleanTypes(){
+    private void booleanTypes() {
         // boolean type
-       boolean isPromoted = false;
-       boolean isProcessed = true;
-        LOGGER.info("false value: " + isPromoted);  
-         LOGGER.info("true value: " + isProcessed);  
+        boolean isPromoted = false;
+        boolean isProcessed = true;
+        LOGGER.info("false value: " + isPromoted);
+        LOGGER.info("true value: " + isProcessed);
     }
-    
 
 
-      public static void main(String[] args) {
+    public static void main(String[] args) {
         VariablesDemo demo = new VariablesDemo();
 
 
-        demo.booleanTypes();  
+        demo.booleanTypes();
         demo.characterTypes();
         demo.floatingTypes();
         demo.variableDeclarations();
         demo.constantVariables();
         demo.integerTypes();
-     
+
     }
 
 }

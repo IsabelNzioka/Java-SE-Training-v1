@@ -1,7 +1,7 @@
 package com.systechafrica;
 
 public class Demo {
-    
+
 
     // Instance methods
     public int addTwoNumbers(int a, int b) {
@@ -15,9 +15,9 @@ public class Demo {
         return result;
     }
 
-    public static void main(String ...args) {
+    public static void main(String... args) {
         Demo demo = new Demo();
         demo.addTwoNumbers(5, 10);
-        add(5, 10);  
-}
+        add(5, 10);
+    }
 }

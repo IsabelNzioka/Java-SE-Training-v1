@@ -11,33 +11,33 @@ public class Order {
     private int ndenguAndAccompishments;
     private int beansAndAccompishments;
     private int pilauVeg;
-    
+
 
     // private ArrayList<String> customerOrders = new ArrayList<>();
 
 
-     public Order() {
+    public Order() {
 
     }
 
-    public Order(int chai, int andazi, int tosti, int ndenguAndAccompishments, int beansAndAccompishments, int pilauVeg ) {
+    public Order(int chai, int andazi, int tosti, int ndenguAndAccompishments, int beansAndAccompishments, int pilauVeg) {
         this.chai = chai;
         this.andazi = andazi;
         this.tosti = tosti;
         this.ndenguAndAccompishments = ndenguAndAccompishments;
         this.beansAndAccompishments = beansAndAccompishments;
         this.pilauVeg = pilauVeg;
-       
+
     }
 
     public int getChai() {
         return chai;
     }
 
-   
+
     public void setChai(int chai) {
         this.chai += chai;
-       
+
     }
 
     public int getAndazi() {
@@ -47,7 +47,7 @@ public class Order {
 
     public void setAndazi(int andazi) {
         this.andazi += andazi;
- 
+
     }
 
     public int getTosti() {
@@ -82,13 +82,11 @@ public class Order {
         this.pilauVeg += pilauVeg;
     }
 
-  
 
     // calculate total cost
     public int calculateTotalOrderCost() {
         return (this.chai + this.andazi + this.tosti + this.ndenguAndAccompishments + this.beansAndAccompishments + this.pilauVeg);
     }
 
-   
-    
+
 }

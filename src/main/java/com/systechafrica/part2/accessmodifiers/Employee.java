@@ -5,14 +5,14 @@ public class Employee {
     boolean contract;
     double salary;
 
-    public Employee(){
+    public Employee() {
         this.name = "Joe";
         this.contract = true;
         this.salary = 100.0;
     }
 
     public static void main(String[] args) {
-       
+
     }
-    
+
 }

@@ -6,6 +6,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "FunctionsDemo",
+      "request": "launch",
+      "mainClass": "com.systechafrica.part4.functionalprogramming.FunctionsDemo",
+      "projectName": "Java-SE-Training-v1"
+    },
+    {
+      "type": "java",
       "name": "New",
       "request": "launch",
       "mainClass": "com.systechafrica.extras.New",

@@ -10,6 +10,7 @@ public class MoreOnOperators {
     private boolean isValidTriangle(int a, int b, int c) {
         return a + b > c && a + c > b && b + c > a;
     }
+
     public void areaOfATriangle() {
         System.out.println("Enter the values of the 3 sides of the triangle: ");
         int sideA = scanner.nextInt();
@@ -22,19 +23,17 @@ public class MoreOnOperators {
             System.out.println("The area of the triangle: " + area);
         } else {
             System.out.println("Invalid triangle sides");
-           
+
         }
     }
 
-  
- 
 
     public static void main(String[] args) {
-       MoreOnOperators app = new MoreOnOperators(); 
-       app.areaOfATriangle();
-    // 
+        MoreOnOperators app = new MoreOnOperators();
+        app.areaOfATriangle();
+        //
 
 
     }
-    
+
 }

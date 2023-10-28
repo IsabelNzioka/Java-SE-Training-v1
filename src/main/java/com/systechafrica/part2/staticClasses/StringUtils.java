@@ -1,7 +1,7 @@
 package com.systechafrica.part2.staticClasses;
 
 public class StringUtils {
-//utility methods in a single class - improves code maintability and makes it easier to locate and use the methods 
+    //utility methods in a single class - improves code maintability and makes it easier to locate and use the methods
     public static boolean isNullOrEmpty(String s) {
         return s == null || isNullOrEmpty(s);
     }
@@ -14,8 +14,8 @@ public class StringUtils {
         return s.isEmpty();
     }
 
-    public static int length(String s ) {
+    public static int length(String s) {
         return s.length();
     }
-    
+
 }

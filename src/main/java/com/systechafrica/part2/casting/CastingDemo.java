@@ -12,7 +12,7 @@ public class CastingDemo {
     //  all methods which are in the super & base?
 
     public static void main(String[] args) {
-        
+
     }
-    
+
 }

@@ -7,7 +7,6 @@ public class Student {
     private String email;
 
 
-    
     public Student(String name, Integer id, String regNo, String email) {
         this.name = name;
         this.id = id;
@@ -15,9 +14,9 @@ public class Student {
         this.email = email;
     }
 
-     public Student(String name, String regNo, String email) {
+    public Student(String name, String regNo, String email) {
         this.name = name;
-     
+
         this.regNo = regNo;
         this.email = email;
     }
@@ -25,34 +24,41 @@ public class Student {
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public Integer getId() {
         return id;
     }
+
     public void setId(Integer id) {
         this.id = id;
     }
+
     public String getRegNo() {
         return regNo;
     }
+
     public void setRegNo(String regNo) {
         this.regNo = regNo;
     }
+
     public String getEmail() {
         return email;
     }
+
     public void setEmail(String email) {
         this.email = email;
     }
 
-  @Override
-   public String toString() {
-     return "Student{" + "id" + id + "name" + name + '\'' +
-                        ", name=" + name + '\'' + 
-                    ", email=" + email + '\'' + "}";
-   }
+    @Override
+    public String toString() {
+        return "Student{" + "id" + id + "name" + name + '\'' +
+                ", name=" + name + '\'' +
+                ", email=" + email + '\'' + "}";
+    }
 
 
 //?    The root interface in the collection hierarchy. 

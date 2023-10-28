@@ -2,16 +2,16 @@ package com.systechafrica.pos;
 
 public class Item {
 
-    
+
     private int itemCode;
     private int quantity;
     private int unitPrice;
     private int totalValue;
-  
-    public  Item() {
-        
+
+    public Item() {
+
     }
-   
+
 
     public Item(int itemCode, int quantity, int unitPrice) {
         this.itemCode = itemCode;
@@ -25,7 +25,7 @@ public class Item {
     private void updateTotalValue() {
         this.totalValue = this.quantity * this.unitPrice;
     }
-   
+
 
     public int getItemCode() {
         return itemCode;
@@ -42,7 +42,7 @@ public class Item {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
         updateTotalValue();
-       
+
     }
 
     public int getUnitPrice() {
@@ -52,21 +52,21 @@ public class Item {
     public void setUnitPrice(int unitPrice) {
         this.unitPrice = unitPrice;
         updateTotalValue();
-      
+
     }
 
     public void setTotalValue(int quantity, int unitPrice) {
         this.totalValue = quantity * unitPrice;
     }
+
     public int getTotalValue() {
         return totalValue;
     }
-
 
 
     // @Override
     // public String toString() {
     //     return this.itemCode + "    " + this.quantity + "    " + this.unitPrice + "    " + this.totalValue;
     // }
-    
+
 }

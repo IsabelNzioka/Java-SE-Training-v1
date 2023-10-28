@@ -3,7 +3,7 @@ package com.systechafrica.part2.inheritance.protectedaccessmodifier.nomenclature
 public class Kingdom {
     protected String randomString;
 
-    protected String sampleMethod(){
+    protected String sampleMethod() {
         return "hello";
     }
 }
